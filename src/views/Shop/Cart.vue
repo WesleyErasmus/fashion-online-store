@@ -1,6 +1,11 @@
 <template>
   <h1>This is the Cart page</h1>
   <div v-for="product in shoppingCart" :key="product.id">
+      <img
+        class="product-img"
+        :src="product.image"
+        alt="Product Image"
+      />
       <h3>{{ product.title }}</h3>
       <h4>R{{ product.price }}</h4>
     <button @click="removeFromCart(product)" >Remove From Cart</button>
@@ -43,4 +48,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.product-img {
+  width: 100px;
+}
+</style>

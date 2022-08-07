@@ -20,7 +20,7 @@ import { RouterLink, RouterView } from "vue-router";
 
 <style scoped>
 header {
-  padding: 2rem;
+  padding: 0 0 2rem 0;
 }
 
 nav a.router-link-exact-active {
