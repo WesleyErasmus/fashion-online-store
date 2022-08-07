@@ -1,7 +1,9 @@
 <template>
   <h1>This is the Shop page</h1>
   <div v-for="product in products" :key="product.id">
-    <div>{{ product.name }}</div>
+    <router-link :to="{ name: 'Product', params: { id: product.id } }">
+      <div>{{ product.title }}</div>
+    </router-link>
     <button @click="addToCart(product)" >Add to Cart</button>
   </div>
 </template>
@@ -10,14 +12,14 @@
 // axios import
 import axios from "axios";
 export default {
-    data() {
-        return {
-            products: [],
-            shoppingCart: [],
-        }
-    },
-    methods: {
-        // Add products to shopping cart function
+  data() {
+    return {
+      products: [],
+      shoppingCart: [],
+    };
+  },
+  methods: {
+    // Add products to shopping cart function
     addToCart(product) {
       // Ensure that the watch-list array is not empty
       if (!this.shoppingCart) {
@@ -27,8 +29,8 @@ export default {
       // Prevents duplicate movies in the watchList
       if (this.shoppingCart.some((e) => e == product)) {
         return;
-      } 
-      
+      }
+
       // Adding movies to the front of the watchList
       if (this.shoppingCart.unshift(product)) {
       }
@@ -53,31 +55,25 @@ export default {
       const parsed = JSON.stringify(this.shoppingCart);
       localStorage.setItem("shoppingCart", parsed);
     },
-        
-    },
-    mounted() {
+  },
+  mounted() {
     // Display local storage movies in the DOM
     if (localStorage.getItem("shoppingCart")) {
       try {
-        this.shoppingCart = JSON.parse(
-          localStorage.getItem("shoppingCart")
-        );
+        this.shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
       } catch (e) {
         localStorage.removeItem("shoppingCart");
       }
     }
 
     axios
-      .get('../data/catalogue.json')
+      .get("https://fakestoreapi.com/products")
       .then((response) => {
-        this.products = response.data.products;
+        this.products = response.data;
         console.warn(response);
       });
-    },
-
-}
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
