@@ -1,9 +1,11 @@
 <template>
-  <h1>Product View</h1>
-  <div v-if="product">
-    <h3>{{ product.title }}</h3>
-    <h4>R{{ product.price }}</h4>
-    <p>Id: {{ product.id }}</p>
+  <div class="product">
+    <h1>Product Details</h1>
+    <div v-if="product">
+      <h3>{{ product.title }}</h3>
+      <h4>R{{ product.price }}</h4>
+      <p>Id: {{ product.id }}</p>
+    </div>
   </div>
 </template>
 
