@@ -10,15 +10,14 @@
         alt="Product Image"
       />
       <div class="full-size-btn">
-        <a href="#img1"> View Full Size Image </a>
+        <a href="#img1"> View Full Size Image</a>
       </div>
-      <h5>{{ product.title }}</h5>
+      <h5>{{ product.category.name }}</h5>
       <h6>R{{ product.price }}</h6>
       <QuantityCounter />
       <button @click="addToCart(product)">Add to Cart</button>
-
       <a href="#_">
-        <img :src="product.image" alt="img2" id="img1" class="lightbox" />
+        <img :src="product.images" alt="img2" id="img1" class="lightbox" />
       </a>
     </div>
     <div v-else>
@@ -27,6 +26,28 @@
   </div>
 
   <!-- =========================================== -->
+  <!-- <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <div class="card h-100">
+        <img src="..." class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ product.title }}</h5>
+          <p class="card-text">
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">R{{ product.price }}</small>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <div v-if="category">
+    <p>{{ category.image }}</p>
+    <p>{{ category.name }}</p>
+  </div> -->
 
   <!-- =========================================== -->
 </template>
@@ -43,6 +64,8 @@ export default {
       // id: this.$route.params.id,
       product: null,
       shoppingCart: [],
+      // category: {},
+      // category: id, name, image
     };
   },
   methods: {
@@ -85,10 +108,12 @@ export default {
     //     this.product = response.data;
     //     console.warn(response);
     //   });
-     axios.get("https://api.escuelajs.co/api/v1/products/" + this.id).then((response) => {
-      this.product = response.data;
-      console.warn(response);
-    });
+    axios
+      .get("https://api.escuelajs.co/api/v1/products/" + this.id)
+      .then((response) => {
+        this.product = response.data;
+        console.warn(response);
+      });
   },
 };
 
@@ -98,7 +123,6 @@ export default {
 </script>
 
 <style scoped>
-
 .product-img {
   width: 250px;
 }

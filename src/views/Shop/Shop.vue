@@ -1,7 +1,8 @@
 <template>
-  <h1>This is the Shop page</h1>
-  <div v-if="products.length">
-    <div class="row product-layout" v-for="product in products" :key="product.id">
+  <div class="shop-page">
+    <h1>This is the Shop page</h1>
+    <div v-if="products.length" class="container">
+      <!-- <div class="row product-layout" v-for="product in products" :key="product.id">
       <router-link :to="{ name: 'Product', params: { id: product.id } }">
         <div class="p-title">{{ product.title }}</div>
         <img
@@ -10,10 +11,35 @@
         alt="Product Image"
       />
       </router-link>
+    </div> -->
+      <div class="row">
+        <div
+          class="card col-lg-2 col-md-3 col-sm-4 col-6 mb-4 mt-4"
+          v-for="product in products"
+          :key="product.id"
+        >
+          <router-link :to="{ name: 'Product', params: { id: product.id } }">
+            <img
+              :src="product.images"
+              class="card-img-top"
+              alt="Product Image"
+            />
+          </router-link>
+          <div class="card-body">
+            <h6 class="card-title">{{ product.title }}</h6>
+            <p class="card-text">
+              {{ product.category.name }}
+            </p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">R{{ product.price }}</small>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div v-else>
-    <Spinner/>
+    <div v-else>
+      <Spinner />
+    </div>
   </div>
 </template>
 
@@ -21,7 +47,7 @@
 // axios import
 import axios from "axios";
 // Components import
-import Spinner from "/src/components/Spinner.vue"
+import Spinner from "/src/components/Spinner.vue";
 export default {
   components: { Spinner },
   data() {
@@ -29,14 +55,13 @@ export default {
       products: [],
     };
   },
-  methods: {
-  },
+  methods: {},
   mounted() {
     // axios.get("https://fakestoreapi.com/products").then((response) => {
     //   this.products = response.data;
     //   console.warn(response);
     // });
-    axios.get("https://api.escuelajs.co/api/v1/products").then((response) => {
+    axios.get("https://api.escuelajs.co/api/v1/products/").then((response) => {
       this.products = response.data;
       console.warn(response);
     });
@@ -45,14 +70,36 @@ export default {
 </script>
 
 <style scoped>
-.product-img {
-  width: 200px;
+.shop-page h1 {
+  margin-bottom: 3rem;
 }
-.product-layout {
-  display: inline-flex;
+
+.card {
+  border: none;
 }
-.p-title {
+.card-body {
+  margin-bottom: -5px;
+  /* padding-bottom: 0px; */
+}
+.card-title {
+  min-height: 35px;
+  font-size: 14px;
+}
+.card-text {
+  color: grey;
   font-size: 12px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+.card-footer {
+  padding-top: 0;
+  margin-top: 0;
+  border: none;
+}
+.card-img-top {
+  aspect-ratio: 2 / 3;
+  /* padding-top: 66.67%; */
+  border-radius: 0;
 }
 
 </style>
