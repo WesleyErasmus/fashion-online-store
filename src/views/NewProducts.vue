@@ -1,5 +1,5 @@
 <template>
-  <div class="new-products-page">
+  <div id="main" class="new-products-page">
     <h1>New Collection</h1>
     <div v-if="products.length" class="container">
       <div class="row">

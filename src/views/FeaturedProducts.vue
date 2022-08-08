@@ -1,5 +1,5 @@
 <template>
-  <div class="featured-products-page">
+  <div id="main" class="featured-products-page">
     <h1>Trending Items</h1>
     <div v-if="products.length" class="container">
       <div class="row">

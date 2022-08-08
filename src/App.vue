@@ -3,7 +3,7 @@ import { RouterLink, RouterView } from "vue-router";
 </script>
 
 <template>
-  <header class="sticky-top">
+  <header id="header" class="sticky-top">
     <!-- Router page links -->
     <div class="wrapper">
       <nav>
@@ -28,10 +28,13 @@ import { RouterLink, RouterView } from "vue-router";
   </header>
 
   <RouterView />
+  <Footer/>
 </template>
 
 <script>
+import Footer from '../src/components/Footer.vue'
 export default {
+  components: { Footer },
   methods: {
     back() {
       this.$router.go(-1);

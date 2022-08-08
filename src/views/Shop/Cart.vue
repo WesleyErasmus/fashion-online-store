@@ -1,5 +1,5 @@
 <template>
-  <div class="cart-page">
+  <div id="main" class="cart-page">
     <h1>Your Cart</h1>
     <div>Total items in cart: {{ cartLength }}</div>
     <div>Total: R{{ priceTotal }}</div>

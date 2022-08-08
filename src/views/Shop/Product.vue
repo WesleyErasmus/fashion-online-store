@@ -1,4 +1,5 @@
 <template>
+<div id="main" class="product-page">
   <div class="product">
     <h1>Product Details</h1>
     <div v-if="product">
@@ -25,31 +26,7 @@
     </div>
   </div>
 
-  <!-- =========================================== -->
-  <!-- <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">{{ product.title }}</h5>
-          <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">R{{ product.price }}</small>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- <div v-if="category">
-    <p>{{ category.image }}</p>
-    <p>{{ category.name }}</p>
-  </div> -->
-
-  <!-- =========================================== -->
+  </div>
 </template>
 
 <script>
@@ -64,8 +41,6 @@ export default {
       // id: this.$route.params.id,
       product: null,
       shoppingCart: [],
-      // category: {},
-      // category: id, name, image
     };
   },
   methods: {

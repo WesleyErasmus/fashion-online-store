@@ -2,8 +2,12 @@
 @import "./productCard.css";
 
 #app {
+  display: block;
+  margin: 0 auto;
+}
+#main {
   max-width: 1280px;
-  padding: 2rem;
+  display: block;
   margin: 0 auto;
 }
 

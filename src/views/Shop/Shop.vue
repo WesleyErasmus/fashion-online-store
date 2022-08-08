@@ -1,5 +1,5 @@
 <template>
-  <div class="shop-page">
+  <div id="main" class="shop-page">
     <h1>This is the Shop page</h1>
     <div v-if="products.length" class="container">
       <!-- <div class="row product-layout" v-for="product in products" :key="product.id">

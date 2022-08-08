@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page">
+  <div id="main" class="home-page">
     <header class="home-page-header">
       <h1>Home Page</h1>
     </header>
@@ -169,6 +169,8 @@
 .home-page {
   padding: 1rem;
    max-width: 1280px;
+   display: block;
+   margin: 0 auto;
 }
 
 .home-page h1 {

@@ -1,4 +1,5 @@
 <template>
+<div id="main" class="contact-page">
   <h1>Contact page</h1>
   <div>
     <iframe
@@ -12,6 +13,8 @@
       referrerpolicy="no-referrer-when-downgrade"
     ></iframe>
     <UserForm/>
+  </div>
+
   </div>
 </template>
 
