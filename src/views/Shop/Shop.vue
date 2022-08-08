@@ -1,12 +1,12 @@
 <template>
   <h1>This is the Shop page</h1>
   <div v-if="products.length">
-    <div v-for="product in products" :key="product.id">
+    <div class="row product-layout" v-for="product in products" :key="product.id">
       <router-link :to="{ name: 'Product', params: { id: product.id } }">
-        <div>{{ product.title }}</div>
+        <div class="p-title">{{ product.title }}</div>
         <img
         class="product-img"
-        :src="product.image"
+        :src="product.images"
         alt="Product Image"
       />
       </router-link>
@@ -32,7 +32,11 @@ export default {
   methods: {
   },
   mounted() {
-    axios.get("https://fakestoreapi.com/products").then((response) => {
+    // axios.get("https://fakestoreapi.com/products").then((response) => {
+    //   this.products = response.data;
+    //   console.warn(response);
+    // });
+    axios.get("https://api.escuelajs.co/api/v1/products").then((response) => {
       this.products = response.data;
       console.warn(response);
     });
@@ -42,6 +46,13 @@ export default {
 
 <style scoped>
 .product-img {
-  width: 150px;
+  width: 200px;
 }
+.product-layout {
+  display: inline-flex;
+}
+.p-title {
+  font-size: 12px;
+}
+
 </style>

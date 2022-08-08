@@ -1,14 +1,15 @@
 <template>
   <h1>This is the Cart page</h1>
+  <div v-if="!shoppingCart.length">Your Cart is empty</div>
   <div v-for="product in shoppingCart" :key="product.id">
-      <img
-        class="product-img"
-        :src="product.image"
-        alt="Product Image"
-      />
-      <h3>{{ product.title }}</h3>
-      <h4>R{{ product.price }}</h4>
-    <button @click="removeFromCart(product)" >Remove From Cart</button>
+    <img class="product-img" :src="product.images" alt="Product Image" />
+    <h3>{{ product.title }}</h3>
+    <h4>R{{ product.price }}</h4>
+
+    <button @click="removeFromCart(product)">Remove From Cart</button>
+    <div>Total items in cart: {{ cartLength }}</div>
+    <div>Total: R{{ priceTotal }}</div>
+    <div></div>
   </div>
 </template>
 
@@ -17,7 +18,20 @@ export default {
   data() {
     return {
       shoppingCart: [],
+      total: 0,
     };
+  },
+  computed: {
+    cartLength() {
+      return this.shoppingCart.length;
+    },
+    priceTotal() {
+      let total = 0;
+      this.shoppingCart.forEach((product, i) => {
+        total += product.price;
+      });
+      return total;
+    },
   },
   methods: {
     // Remove movies from watch-list function
@@ -33,6 +47,9 @@ export default {
     saveToLocalStorage() {
       const parsed = JSON.stringify(this.shoppingCart);
       localStorage.setItem("shoppingCart", parsed);
+
+      console.log(this.shoppingCart);
+      console.log(this.shoppingCart.$price);
     },
   },
   mounted() {
@@ -50,6 +67,6 @@ export default {
 
 <style>
 .product-img {
-  width: 100px;
+  width: 150px;
 }
 </style>

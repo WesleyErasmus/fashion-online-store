@@ -1,8 +1,12 @@
 <template>
   <div class="quantity-toggle">
-    <button @click="decrement()">&mdash;</button>
+    <button @click="decrement()"><span class="material-symbols-outlined">
+remove
+</span></button>
     <input type="text" :value="quantity" readonly />
-    <button @click="increment()">&#xff0b;</button>
+    <button @click="increment()"><span class="material-symbols-outlined">
+add
+</span></button>
   </div>
 </template>
 
@@ -41,16 +45,18 @@ input {
   line-height: 0;
   border-top: 1px solid #bdbdbd;
   border-bottom: 1px solid #bdbdbd;
+  background: #fff;
 }
 
 button {
   border: 1px solid #bdbdbd;
   border-radius: 0px;
   padding: 0.5rem;
-  background: #f5f5f5;
+  background: #e7e7e7;
   color: #888;
   font-size: 1rem;
   cursor: pointer;
   margin: 0;
+  line-height: 0;
 }
 </style>

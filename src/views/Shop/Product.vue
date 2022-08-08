@@ -6,10 +6,10 @@
       <h3>{{ product.title }}</h3>
       <img
         class="product-img thumbnail"
-        :src="product.image"
+        :src="product.images"
         alt="Product Image"
       />
-      <div>
+      <div class="full-size-btn">
         <a href="#img1"> View Full Size Image </a>
       </div>
       <h5>{{ product.title }}</h5>
@@ -53,14 +53,8 @@ export default {
         return;
       }
 
-      // Adding movies to the front of the watchList
+      // Adding products to the front of the watchList
       if (this.shoppingCart.unshift(product)) {
-      }
-
-      // Prevents duplicate movies in the watchList
-      if (this.watchList.some((e) => e == movie)) {
-        this.duplicateMovieAlert();
-        return;
       }
 
       // Save to local storage function
@@ -69,14 +63,14 @@ export default {
       console.log(this.shoppingCart);
     },
 
-    // Save movies to watch-list function
+    // Save products to watch-list function
     saveToLocalStorage() {
       const parsed = JSON.stringify(this.shoppingCart);
       localStorage.setItem("shoppingCart", parsed);
     },
   },
   mounted() {
-    // Display local storage movies in the DOM
+    // Display local storage products in the DOM
     if (localStorage.getItem("shoppingCart")) {
       try {
         this.shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
@@ -85,12 +79,16 @@ export default {
       }
     }
 
-    axios
-      .get("https://fakestoreapi.com/products/" + this.id)
-      .then((response) => {
-        this.product = response.data;
-        console.warn(response);
-      });
+    // axios
+    //   .get("https://fakestoreapi.com/products/" + this.id)
+    //   .then((response) => {
+    //     this.product = response.data;
+    //     console.warn(response);
+    //   });
+     axios.get("https://api.escuelajs.co/api/v1/products/" + this.id).then((response) => {
+      this.product = response.data;
+      console.warn(response);
+    });
   },
 };
 
@@ -100,12 +98,13 @@ export default {
 </script>
 
 <style scoped>
-.product {
-  padding: 2rem;
-}
 
 .product-img {
   width: 250px;
+}
+
+.full-size-btn {
+  padding: 15px 0;
 }
 
 /* // ========================================= */
