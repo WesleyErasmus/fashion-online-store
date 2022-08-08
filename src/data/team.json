@@ -1,0 +1,46 @@
+{
+  "team": [
+    {
+      "id": "1",
+      "name": "Carson Olsen",
+      "portrait": "https://images.unsplash.com/photo-1629425733761-caae3b5f2e50?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+      "job_title": "Graphics Designer",
+      "bio": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus neque vitae voluptatem iure. Pariatur ut corrupti eligendi molestias, commodi laborum suscipit minima, quo minus aperiam placeat unde labore amet repellat."
+    },
+    {
+      "id": "2",
+      "name": "Mairead Ferrell",
+      "portrait": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
+      "job_title": "Database administrator",
+      "bio": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus neque vitae voluptatem iure. Pariatur ut corrupti eligendi molestias, commodi laborum suscipit minima, quo minus aperiam placeat unde labore amet repellat."
+    },
+    {
+      "id": "3",
+      "name": "Rudra Connolly",
+      "portrait": "https://images.unsplash.com/photo-1573496358961-3c82861ab8f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
+      "job_title": "Editor",
+      "bio": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus neque vitae voluptatem iure. Pariatur ut corrupti eligendi molestias, commodi laborum suscipit minima, quo minus aperiam placeat unde labore amet repellat."
+    },
+    {
+      "id": "4",
+      "name": "Izzy Salas",
+      "portrait": "https://images.unsplash.com/photo-1543132220-3ec99c6094dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+      "job_title": "Customer Service Representative",
+      "bio": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus neque vitae voluptatem iure. Pariatur ut corrupti eligendi molestias, commodi laborum suscipit minima, quo minus aperiam placeat unde labore amet repellat."
+    },
+    {
+      "id": "5",
+      "name": "Mercedes Holt",
+      "portrait": "https://images.unsplash.com/photo-1581065178047-8ee15951ede6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=415&q=80",
+      "job_title": "Computer Support Specialist",
+      "bio": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus neque vitae voluptatem iure. Pariatur ut corrupti eligendi molestias, commodi laborum suscipit minima, quo minus aperiam placeat unde labore amet repellat."
+    },
+    {
+      "id": "6",
+      "name": "Justine Estrada",
+      "portrait": "https://images.unsplash.com/photo-1573497161161-c3e73707e25c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      "job_title": "Marketing Manager",
+      "bio": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus neque vitae voluptatem iure. Pariatur ut corrupti eligendi molestias, commodi laborum suscipit minima, quo minus aperiam placeat unde labore amet repellat."
+    }
+  ]
+}

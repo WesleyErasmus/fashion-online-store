@@ -6,6 +6,7 @@ import Cart from "../views/shop/Cart.vue";
 import About from "../views/About.vue";
 import Contact from "../views/Contact.vue";
 import FeaturedProducts from "../views/FeaturedProducts.vue";
+import NewProducts from "../views/NewProducts.vue";
 import UserForm from "../components/UserForm.vue";
 
 const router = createRouter({
@@ -51,6 +52,11 @@ const router = createRouter({
       path: "/userform",
       name: "UserForm",
       component: UserForm,
+    },
+    {
+      path: "/newproducts",
+      name: "NewProducts",
+      component: NewProducts,
     },
   ],
 });

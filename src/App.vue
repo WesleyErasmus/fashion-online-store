@@ -13,12 +13,14 @@ import { RouterLink, RouterView } from "vue-router";
         <RouterLink :to="{ name: 'About' }">About</RouterLink>
         <RouterLink :to="{ name: 'Contact' }">Contact</RouterLink>
         <RouterLink :to="{ name: 'FeaturedProducts' }">Trending</RouterLink>
+        <RouterLink :to="{ name: 'NewProducts' }">New In</RouterLink>
       </nav>
     </div>
     
     <!-- Redirect buttons -->
     <div class="redirect-btn-container">
       <nav>
+         <a class="back-to-top-btn" href="#">Back to top</a>
         <a class="redirect-btn" @click="back">Back</a>
         <a class="redirect-btn" @click="forward">Forward</a>
       </nav>
@@ -46,6 +48,9 @@ header {
   padding: 0 0 2rem 0;
   text-align: center;
   background: #fff;
+}
+.back-to-top-btn {
+  color: rgb(158, 158, 158);
 }
 nav a.router-link-exact-active {
   color: #000;

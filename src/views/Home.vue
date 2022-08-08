@@ -88,6 +88,7 @@
     </RouterLink>
 
     <!-- New Products -->
+    <RouterLink :to="{ name: 'NewProducts' }">
     <div class="new-products-container">
       <h1>New In</h1>
       <div class="card-group">
@@ -157,6 +158,7 @@
         </div>
       </div>
     </div>
+    </RouterLink>
   </div>
   <!-- End of Home Page Wrapper -->
 </template>
