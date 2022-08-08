@@ -1,20 +1,49 @@
 <template>
-  <h1>This is the Cart page</h1>
-  <div v-if="!shoppingCart.length">Your Cart is empty</div>
-  <div v-for="product in shoppingCart" :key="product.id">
-    <img class="product-img" :src="product.images" alt="Product Image" />
-    <h3>{{ product.title }}</h3>
-    <h4>R{{ product.price }}</h4>
-
-    <button @click="removeFromCart(product)">Remove From Cart</button>
+  <div class="cart-page">
+    <h1>Your Cart</h1>
     <div>Total items in cart: {{ cartLength }}</div>
     <div>Total: R{{ priceTotal }}</div>
-    <div></div>
+    <div v-if="!shoppingCart.length">Your Cart is empty</div>
+    <div v-if="shoppingCart.length" class="container">
+      <div class="row">
+        <div
+          class="card col-lg-2 col-md-3 col-sm-4 col-6 mb-4 mt-4"
+          v-for="product in shoppingCart"
+          :key="product.id"
+        >
+          <img :src="product.images" class="card-img-top" alt="Product Image" />
+          <div class="card-body">
+            <h6 class="card-title">{{ product.title }}</h6>
+            <p class="card-text">
+              {{ product.category.name }}
+            </p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">R{{ product.price }}</small>
+          </div>
+          <button @click="removeFromCart(product)">Remove From Cart</button>
+        </div>
+      </div>
+    </div>
+    <div v-else>
+      <Spinner />
+    </div>
+
+    <div class="checkout">
+      <div>Total: R{{ priceTotal }}</div>
+       <RouterLink :to="{ name: 'UserForm' }">
+      <button class="checkout-btn">Proceed To Checkout</button>
+      </RouterLink>
+    </div>
+
+    <!-- End of Cart Page Wrapper -->
   </div>
 </template>
 
 <script>
+import Spinner from "/src/components/Spinner.vue";
 export default {
+  components: { Spinner },
   data() {
     return {
       shoppingCart: [],
@@ -65,8 +94,8 @@ export default {
 };
 </script>
 
-<style>
-.product-img {
-  width: 150px;
+<style scoped>
+.checkout {
+  float: right;
 }
 </style>

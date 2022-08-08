@@ -35,7 +35,9 @@
 
 <script>
 import axios from "axios";
+import Spinner from "/src/components/Spinner.vue"
 export default {
+    components: { Spinner },
   data() {
     return {
       products: [],

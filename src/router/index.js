@@ -5,7 +5,8 @@ import Product from "../views/shop/Product.vue";
 import Cart from "../views/shop/Cart.vue";
 import About from "../views/About.vue";
 import Contact from "../views/Contact.vue";
-import FeaturedProducts from "../views/FeaturedProducts.vue"
+import FeaturedProducts from "../views/FeaturedProducts.vue";
+import UserForm from "../components/UserForm.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -45,6 +46,11 @@ const router = createRouter({
       path: "/contact",
       name: "Contact",
       component: Contact,
+    },
+    {
+      path: "/userform",
+      name: "UserForm",
+      component: UserForm,
     },
   ],
 });

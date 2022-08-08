@@ -12,8 +12,10 @@ import { RouterLink, RouterView } from "vue-router";
         <RouterLink :to="{ name: 'Cart' }">Cart</RouterLink>
         <RouterLink :to="{ name: 'About' }">About</RouterLink>
         <RouterLink :to="{ name: 'Contact' }">Contact</RouterLink>
+        <RouterLink :to="{ name: 'FeaturedProducts' }">Trending</RouterLink>
       </nav>
     </div>
+    
     <!-- Redirect buttons -->
     <div class="redirect-btn-container">
       <nav>

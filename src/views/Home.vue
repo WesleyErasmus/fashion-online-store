@@ -20,8 +20,8 @@
       <div class="card-group">
         <div class="card">
           <img
-            class="card-img-top"
             src="https://assets.superbalistcdn.co.za/300x432/filters:quality(75):format(jpg)/2760770/original.jpg"
+           
             alt="Just Dropped"
           />
           <div class="card-body">
@@ -34,7 +34,7 @@
         <div class="card">
           <img
             src="https://assets.superbalistcdn.co.za/300x432/filters:quality(75):format(jpg)/2769323/original.jpg"
-            class="card-img-top"
+           
             alt="Just Dropped"
           />
           <div class="card-body">
@@ -47,6 +47,7 @@
         <div class="card">
           <img
             src="https://assets.superbalistcdn.co.za/300x432/filters:quality(75):format(jpg)/2773631/original.jpg"
+           
             alt="Just Dropped"
           />
           <div class="card-body">
@@ -59,7 +60,7 @@
         <div class="card">
           <img
             src="https://assets.superbalistcdn.co.za/300x432/filters:quality(75):format(jpg)/2615216/original.jpg"
-            class="card-img-top"
+           
             alt="Just Dropped"
           />
           <div class="card-body">
@@ -72,6 +73,7 @@
         <div class="card">
           <img
             src="https://assets.superbalistcdn.co.za/300x432/filters:quality(75):format(jpg)/2773045/original.jpg"
+           
             alt="Just Dropped"
           />
           <div class="card-body">
@@ -91,7 +93,7 @@
       <div class="card-group">
         <div class="card">
           <img
-            class="card-img-top"
+           
             src="https://assets.superbalistcdn.co.za/300x432/filters:quality(75):format(jpg)/2690455/original.jpg"
             alt="Just Dropped"
           />
@@ -105,7 +107,7 @@
         <div class="card">
           <img
             src="https://assets.superbalistcdn.co.za/300x432/filters:quality(75):format(jpg)/2748324/original.jpg"
-            class="card-img-top"
+           
             alt="Just Dropped"
           />
           <div class="card-body">
@@ -130,7 +132,7 @@
         <div class="card">
           <img
             src="https://assets.superbalistcdn.co.za/300x432/filters:quality(75):format(jpg)/2757959/original.jpg"
-            class="card-img-top"
+           
             alt="Just Dropped"
           />
           <div class="card-body">
@@ -143,7 +145,7 @@
         <div class="card">
           <img
             src="https://assets.superbalistcdn.co.za/300x432/filters:quality(75):format(jpg)/2756710/original.jpg"
-            class="card-img-top"
+           
             alt="Just Dropped"
           />
           <div class="card-body">

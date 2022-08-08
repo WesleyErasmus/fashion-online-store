@@ -1,0 +1,30 @@
+.card {
+  border: none;
+}
+.card-body {
+  margin-bottom: -5px;
+  /* padding-bottom: 0px; */
+}
+.card-title {
+  min-height: 35px;
+  font-size: 14px;
+}
+.card-text {
+  color: grey;
+  font-size: 12px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+.card-footer {
+  padding-top: 0;
+  margin-top: 0;
+  border: none;
+}
+.card-img-top {
+  aspect-ratio: 2 / 3;
+  border-radius: 0;
+   transition: 0.3s;
+}
+.card-img-top:hover {
+    transform: scale(102%);
+}
