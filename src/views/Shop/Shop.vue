@@ -9,8 +9,11 @@
           :key="product.id"
         >
           <router-link :to="{ name: 'Product', params: { id: product.id } }">
+          <!-- :src="product.images" -->
             <img
-              :src="product.images"
+              :src="
+                'https://source.unsplash.com/random/?fashion/id' + product.id
+              "
               class="card-img-top"
               alt="Product Image"
             />

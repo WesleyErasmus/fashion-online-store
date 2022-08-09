@@ -11,7 +11,10 @@
           v-for="product in shoppingCart"
           :key="product.id"
         >
-          <img :src="product.images" class="card-img-top" alt="Product Image" />
+          <img :src="
+                'https://source.unsplash.com/random/?fashion/id' + product.id
+              "
+          class="card-img-top" alt="Product Image" />
           <div class="card-body">
             <h6 class="card-title">{{ product.title }}</h6>
             <p class="card-text">

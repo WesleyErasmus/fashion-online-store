@@ -107,12 +107,6 @@ export default {
       }
     }
 
-    // axios
-    //   .get("https://fakestoreapi.com/products/" + this.id)
-    //   .then((response) => {
-    //     this.product = response.data;
-    //     console.warn(response);
-    //   });
     axios
       .get("https://api.escuelajs.co/api/v1/products/" + this.id)
       .then((response) => {
