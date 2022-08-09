@@ -1,5 +1,6 @@
 .card {
   border: none;
+   /* padding: var(--card-padding); */
 }
 .card-body {
   margin-bottom: -5px;
@@ -9,7 +10,7 @@
   font-weight: bold;
   min-height: 35px;
   font-size: 13px;
-   margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 .card-text {
   color: grey;
@@ -30,8 +31,8 @@
 .card-img-top {
   aspect-ratio: 2 / 3;
   border-radius: 0;
-   transition: 0.3s;
+  transition: 0.3s;
 }
 .card-img-top:hover {
-    transform: scale(102%);
+  transform: scale(102%);
 }

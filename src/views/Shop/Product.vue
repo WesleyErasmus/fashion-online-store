@@ -195,11 +195,11 @@ export default {
   margin-top: 3rem;
   width: 100%;
   background: hsla(160, 100%, 37%, 1);
-  padding: 1rem;
+  padding: .7rem;
   border-radius: 8px;
   font-weight: bold;
   color: #fff;
-  font-size: calc(13px + 0.6rem);
+  font-size: calc(11px + 0.6rem);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .shopping-cart-icon {
@@ -211,6 +211,6 @@ export default {
   opacity: 0.8;
 }
 .material-symbols-outlined {
-  font-size: 32px;
+  font-size: 28px;
 }
 </style>

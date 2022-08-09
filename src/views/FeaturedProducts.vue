@@ -1,6 +1,6 @@
 <template>
   <div id="main" class="featured-products-page">
-    <h1>Trending Items</h1>
+    <h1>Trending Collection</h1>
     <div v-if="products.length" class="container">
       <div class="row">
         <div

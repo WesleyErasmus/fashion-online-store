@@ -20,6 +20,7 @@ import { RouterLink, RouterView } from "vue-router";
     <!-- Redirect buttons -->
     <div class="redirect-btn-container">
       <nav>
+        <span>#youreasynav >></span>
          <a class="back-to-top-btn" href="#">Back to top</a>
         <a class="redirect-btn" @click="back">Back</a>
         <a class="redirect-btn" @click="forward">Forward</a>
@@ -51,7 +52,7 @@ export default {
 header {
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
     Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  padding: 1rem 0 2rem 0;
+  padding: 1rem 0 ;
   text-align: center;
   background: #fff;
 }
@@ -78,7 +79,7 @@ nav a:first-of-type {
 
 .redirect-btn-container {
   display: inline-block;
-  margin-top: 2rem;
+  margin-top: 1rem;
   padding-bottom: .5rem;
   border-bottom: 1px solid #ddd;
   cursor: pointer;

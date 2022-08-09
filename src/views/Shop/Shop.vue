@@ -2,16 +2,6 @@
   <div id="main" class="shop-page">
     <h1>This is the Shop page</h1>
     <div v-if="products.length" class="container">
-      <!-- <div class="row product-layout" v-for="product in products" :key="product.id">
-      <router-link :to="{ name: 'Product', params: { id: product.id } }">
-        <div class="p-title">{{ product.title }}</div>
-        <img
-        class="product-img"
-        :src="product.images"
-        alt="Product Image"
-      />
-      </router-link>
-    </div> -->
       <div class="row">
         <div
           class="card col-lg-2 col-md-3 col-sm-4 col-6 mb-4 mt-4"
