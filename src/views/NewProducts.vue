@@ -22,7 +22,7 @@
             </p>
           </div>
           <div class="card-footer">
-            <small class="text-muted">R{{ product.price }}</small>
+           <p class="price">R{{ product.price }}</p>
           </div>
         </div>
       </div>

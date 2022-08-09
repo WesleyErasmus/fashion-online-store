@@ -13,5 +13,6 @@ const app = createApp(App);
 app.use(router);
 
 app.mount("#app");
-
+// Bootstrap popper.js
 import 'bootstrap/dist/js/bootstrap.js'
+import { popper } from "@popperjs/core";

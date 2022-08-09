@@ -1,8 +1,8 @@
 <template>
   <div id="main" class="cart-page">
     <h1>Your Cart</h1>
-    <div>Total items in cart: {{ cartLength }}</div>
-    <div>Total: R{{ priceTotal }}</div>
+    <div>Total items in cart: <span class="count">{{ cartLength }}</span></div>
+    <div>Total: <span class="count">R{{ priceTotal }}</span></div>
     <div v-if="!shoppingCart.length">Your Cart is empty</div>
     <div v-if="shoppingCart.length" class="container">
       <div class="row">
@@ -19,7 +19,7 @@
             </p>
           </div>
           <div class="card-footer">
-            <small class="text-muted">R{{ product.price }}</small>
+            <p class="price">R{{ product.price }}</p>
           </div>
           <button @click="removeFromCart(product)">Remove From Cart</button>
         </div>
@@ -30,7 +30,7 @@
     </div>
 
     <div class="checkout">
-      <div>Total: R{{ priceTotal }}</div>
+      <div>Total: <span class="count">R{{ priceTotal }}</span></div>
        <RouterLink :to="{ name: 'UserForm' }">
       <button class="checkout-btn">Proceed To Checkout</button>
       </RouterLink>
@@ -96,6 +96,11 @@ export default {
 
 <style scoped>
 .checkout {
-  float: right;
+  /* position: relative;
+  right: 0; */
+}
+.count {
+  color: hsla(160, 100%, 37%, 1);
+  font-weight: bold;
 }
 </style>

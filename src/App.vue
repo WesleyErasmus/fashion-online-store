@@ -47,8 +47,11 @@ export default {
 </script>
 
 <style scoped>
+
 header {
-  padding: 0 0 2rem 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  padding: 1rem 0 2rem 0;
   text-align: center;
   background: #fff;
 }

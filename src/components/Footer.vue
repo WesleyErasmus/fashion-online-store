@@ -2,7 +2,7 @@
   <div id="footer" class="footer">
     <footer class="footer-wrapper">
       <header>
-        <div>Subscribe to our BLOG</div>
+        <div class="newsletter">Subscribe to our NEWSLETTER</div>
         <div class="signup">
           <input type="text" placeholder="Enter your email address" />
         </div>
@@ -10,43 +10,43 @@
       </header>
       <div class="footer-inner">
         <main>
-
           <div class="footer-links">
             <ul class="footer-links-container">
-              <li class="link-heading">Hello</li>
-              <li>Hello</li>
-              <li>Hello</li>
-              <li>Hello</li>
-              <li>Hello</li>
+              <li class="link-heading">Shipping</li>
+              <li>Online Store</li>
+              <li>Terms and conditions</li>
+              <li>Campaigns and flash sales</li>
+              <li>Retail outlets</li>
             </ul>
 
             <ul class="footer-links-container">
-              <li class="link-heading">Hello</li>
-              <li>Hello</li>
-              <li>Hello</li>
-              <li>Hello</li>
-              <li>Hello</li>
+              <li class="link-heading">Partners</li>
+              <li>Customer service</li>
+              <li>Faqs</li>
+              <li>Account details</li>
+              <li>Returns policy</li>
             </ul>
 
             <ul class="footer-links-container">
-              <li class="link-heading">Hello</li>
-              <li>Hello</li>
-              <li>Hello</li>
-              <li>Hello</li>
-              <li>Hello</li>
+              <li class="link-heading">Buy gift vouchers</li>
+              <li>Orders</li>
+              <li>Careers</li>
+              <li>Privacy policy</li>
+              <li>Credit</li>
             </ul>
             <section class="logo-voucher">
-            <div class="logo">WEBSITE LOGO</div>
-            <div class="voucher">Register for your Voucher</div>
-          </section>
+              <div class="logo">WEBSITE LOGO</div>
+              <div class="voucher">Register for your Discount</div>
+            </section>
           </div>
         </main>
         <div class="sm-links">
-          <a href=""><img src="" alt="" />ico</a>
-          <a href=""><img src="" alt="" />ico</a>
-          <a href=""><img src="" alt="" />ico</a>
-          <a href=""><img src="" alt="" />ico</a>
-          <a href=""><img src="" alt="" />ico</a>
+          <a href=""><i class="fa-brands fa-facebook"></i></a>
+          <a href=""><i class="fa-brands fa-twitter"></i></a>
+          <a href=""><i class="fa-brands fa-instagram"></i></a>
+          <a href=""><i class="fa-brands fa-linkedin"></i></a>
+          <a href=""><i class="fa-brands fa-tiktok"></i></a>
+          <a href=""><i class="fa-brands fa-youtube"></i></a>
         </div>
       </div>
     </footer>
@@ -76,9 +76,21 @@ header {
   align-content: center;
   align-items: center;
 }
+
+input {
+  padding: 0.25rem;
+  width: 20rem;
+}
+
+::placeholder {
+  font-size: calc(8px + 0.3rem);
+}
 .signup {
 }
-.blogs {
+.newsletter {
+  padding-bottom: 5px;
+  color: #c1c1c1;
+  font-weight: 600;
 }
 main {
   display: block;
@@ -86,7 +98,6 @@ main {
   max-width: 1280px;
   background: #2f3131;
   padding: 2rem 0;
-
 }
 .logo-voucher {
   display: flex;
@@ -95,12 +106,12 @@ main {
   padding: 1rem;
 }
 .logo {
-   color: hsla(160, 100%, 37%, 1);
+  color: hsla(160, 100%, 37%, 1);
 }
 .voucher {
-    padding-bottom: 5px;
-    /* text-decoration: underline; */
-    border-bottom: 1px solid #FFF;
+  padding-bottom: 5px;
+  color: #c1c1c1;
+  font-weight: 600;
 }
 .footer-links {
   padding: 1rem;
@@ -115,9 +126,17 @@ main {
 
 li {
   margin: 0.25rem 0;
+  font-size: 12px;
 }
+li:hover { 
+  opacity: .8;
+  cursor: pointer;
+  color: #fff;
+}
+
 .link-heading {
   color: #fff;
+  font-size: 13px;
 }
 
 .sm-links {
@@ -128,8 +147,12 @@ li {
   justify-content: center;
 }
 a {
+  color: #fff;
   padding: 1rem;
 }
-img {
+a:hover {
+  transform: scale(1.5);
+  background: none;
+    color: hsla(160, 100%, 37%, 1);
 }
 </style>
