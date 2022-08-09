@@ -4,9 +4,16 @@
       <header>
         <div class="newsletter">Subscribe to our NEWSLETTER</div>
         <div class="signup">
-          <input type="text" placeholder="Enter your email address" />
+          <!-- <form @submit.prevent="submitForm"> -->
+          <input
+            v-model="newSubscriber"
+            name="subscriber"
+            type="email"
+            placeholder="Enter your email address"
+          />
+          <!-- </form> -->
         </div>
-        <div class="blogs"><button>SIGNUP</button></div>
+        <div class="blogs"><button @click="addSubscriber">SIGNUP</button></div>
       </header>
       <div class="footer-inner">
         <main>
@@ -34,9 +41,9 @@
               <li>Privacy policy</li>
               <li>Credit</li>
             </ul>
-            <section class="logo-voucher">
+            <section class="logo-discount-container">
               <div class="logo">WEBSITE LOGO</div>
-              <div class="voucher">Register for your Discount</div>
+              <div class="discount">Register for your Discount</div>
             </section>
           </div>
         </main>
@@ -54,11 +61,46 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      subscriberList: [],
+      newSubscriber: null,
+    };
+  },
+  mounted() {
+    if (localStorage.getItem("subscriberList")) {
+      try {
+        this.subscriberList = JSON.parse(
+          localStorage.getItem("subscriberList")
+        );
+      } catch (e) {
+        localStorage.removeItem("subscriberList");
+      }
+    }
+  },
+  methods: {
+    addSubscriber() {
+      // ensure they actually typed something
+      if (!this.newSubscriber) {
+        return;
+      }
+
+      this.subscriberList.push(this.newSubscriber);
+      this.newSubscriber = "";
+      this.saveSubscriber();
+    },
+    saveSubscriber() {
+      const parsed = JSON.stringify(this.subscriberList);
+      localStorage.setItem("subscriberList", parsed);
+    },
+  },
+};
 </script>
 
 <style scoped>
 footer {
+  margin-top: 10rem;
   background: #242626;
   color: #9d9d9d;
 }
@@ -99,7 +141,7 @@ main {
   background: #2f3131;
   padding: 2rem 0;
 }
-.logo-voucher {
+.logo-discount-container {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -108,10 +150,14 @@ main {
 .logo {
   color: hsla(160, 100%, 37%, 1);
 }
-.voucher {
+.discount {
   padding-bottom: 5px;
   color: #c1c1c1;
   font-weight: 600;
+}
+.discount:hover {
+  color: #fff;
+  cursor: pointer;
 }
 .footer-links {
   padding: 1rem;
@@ -128,8 +174,8 @@ li {
   margin: 0.25rem 0;
   font-size: 12px;
 }
-li:hover { 
-  opacity: .8;
+li:hover {
+  opacity: 0.8;
   cursor: pointer;
   color: #fff;
 }
@@ -153,6 +199,6 @@ a {
 a:hover {
   transform: scale(1.5);
   background: none;
-    color: hsla(160, 100%, 37%, 1);
+  color: hsla(160, 100%, 37%, 1);
 }
 </style>

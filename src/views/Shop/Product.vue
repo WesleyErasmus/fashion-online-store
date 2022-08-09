@@ -1,31 +1,61 @@
 <template>
-<div id="main" class="product-page">
-  <div class="product">
-    <h1>Product Details</h1>
-    <div v-if="product">
-      <h6>Product Id: {{ product.id }}</h6>
-      <h3>{{ product.title }}</h3>
-      <img
-        class="product-img thumbnail"
-        :src="product.images"
-        alt="Product Image"
-      />
-      <div class="full-size-btn">
-        <a href="#img1"> View Full Size Image</a>
-      </div>
-      <h5>{{ product.category.name }}</h5>
-      <h6>R{{ product.price }}</h6>
-      <QuantityCounter />
-      <button @click="addToCart(product)">Add to Cart</button>
-      <a href="#_">
-        <img :src="product.images" alt="img2" id="img1" class="lightbox" />
-      </a>
-    </div>
-    <div v-else>
-      <Spinner />
-    </div>
-  </div>
+  <div id="main" class="product-page">
+    <div class="product">
+      <!-- Product template -->
+      <div v-if="product">
+        <h1>Product Details</h1>
 
+        <div class="product-container">
+          <div class="product-image-container">
+            <div class="img-box">
+              <img
+                class="product-img"
+                :src="product.images"
+                alt="Product Image"
+              />
+            </div>
+
+            <!-- Product images array -->
+            <div v-for="item in product.images" :key="item">
+              <div class="img-box">
+                <img class="product-img" :src="item" alt="Product Image" />
+              </div>
+            </div>
+          </div>
+
+          <!-- End of product images container -->
+          <div class="product-details">
+            <span class="product-id">Product id: {{ product.id }}</span>
+
+            <h3 class="product-title">{{ product.title }}</h3>
+
+            <div class="product-price">R{{ product.price }}</div>
+
+            <div class="product-department">
+              Department: {{ product.category.name }}
+            </div>
+
+            <div class="product-description-title">Product Details</div>
+
+            <div class="product-description">{{ product.description }}</div>
+
+            <!-- Add to cart button -->
+            <button class="add-to-cart-btn" @click="addToCart(product)">
+              <span class="material-symbols-outlined shopping-cart-icon">
+                add_shopping_cart
+              </span>
+              Add to Cart
+            </button>
+          </div>
+          <!-- End of product details container -->
+        </div>
+
+        <!-- <QuantityCounter /> -->
+      </div>
+      <div v-else>
+        <Spinner />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -98,43 +128,89 @@ export default {
 </script>
 
 <style scoped>
+.product-container {
+  display: flex;
+}
+.product-image-container {
+  position: relative;
+  width: 590px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+  flex-direction: row;
+}
+.img-box {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  overflow: hidden;
+  margin: 0.2rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 .product-img {
-  width: 250px;
+  width: 280px;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
-
-.full-size-btn {
-  padding: 15px 0;
+.product-img:hover {
+  z-index: 100;
+  position: relative;
+  transform: scale(1.2);
+  cursor: zoom-in;
 }
-
-/* // ========================================= */
-
-.lightbox {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  /* height: 95%; */
-  text-align: center;
-  top: 0;
-  left: 0;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
+.product-details {
+  width: 450px;
+  margin-left: 2rem;
 }
-
-.lightbox img {
-  max-width: 90%;
-  max-height: 80%;
+.product-title {
+  padding: 0 0.5rem;
 }
-
-.lightbox:target {
-  display: block;
-  outline: none;
-  border: 1px solid #000;
-  padding-right: 30vw;
-  padding-left: 30vw;
-  margin: 10px 0 10px 0;
-  width: 94%;
-  background: #fff;
+.product-price {
+  font-size: calc(14px + 1rem);
+  font-weight: bold;
+  padding: 0 0.5rem;
+}
+.product-id {
+  padding: 0 0.5rem;
+  font-size: calc(8px + 0.2rem);
+}
+.product-department {
+  color: grey;
+  padding: 0 0.5rem;
+}
+.product-description-title {
+  padding: 0 0.5rem;
+  margin-top: 3rem;
+  color: rgb(102, 102, 102);
+  font-weight: 600;
+  padding-bottom: 0.2rem;
+}
+.product-description {
+  padding: 0 0.5rem;
+  color: grey;
+  font-size: calc(8px + 0.35rem);
+}
+.add-to-cart-btn {
+  margin-top: 3rem;
+  width: 100%;
+  background: hsla(160, 100%, 37%, 1);
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #fff;
+  font-size: calc(13px + 0.6rem);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.shopping-cart-icon {
+  position: relative;
+  bottom: -4px;
+  margin-right: 13px;
+}
+.add-to-cart-btn:hover {
+  opacity: 0.8;
+}
+.material-symbols-outlined {
+  font-size: 32px;
 }
 </style>
