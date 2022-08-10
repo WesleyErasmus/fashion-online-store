@@ -189,8 +189,7 @@ export default {
   width: 100%;
   background: var(--primary-color);
   padding: .5rem;
-  border-radius: 8px;
-  /* font-weight: bold; */
+  border-radius: 6px;
   color: #fff;
   font-size: calc(13px + 0.5rem);
   box-shadow: var(--card-shadows);

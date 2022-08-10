@@ -1,6 +1,6 @@
 <template>
   <div id="main" class="shop-page">
-    <h1>This is the Shop page</h1>
+    <h1>Shop All Our Collections</h1>
     <div v-if="products.length" class="container">
       <div class="row">
         <div
@@ -68,7 +68,5 @@ export default {
 .shop-page h1 {
   margin-bottom: 3rem;
 }
-
-
 
 </style>
