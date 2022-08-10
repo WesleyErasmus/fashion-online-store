@@ -140,7 +140,6 @@ export default {
   align-content: center;
   overflow: hidden;
   margin: 0.2rem;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .product-img {
   width: 280px;
@@ -188,13 +187,13 @@ export default {
 .add-to-cart-btn {
   margin-top: 3rem;
   width: 100%;
-  background: hsla(160, 100%, 37%, 1);
-  padding: .7rem;
+  background: var(--primary-color);
+  padding: .5rem;
   border-radius: 8px;
-  font-weight: bold;
+  /* font-weight: bold; */
   color: #fff;
-  font-size: calc(11px + 0.6rem);
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  font-size: calc(13px + 0.5rem);
+  box-shadow: var(--card-shadows);
 }
 .shopping-cart-icon {
   position: relative;

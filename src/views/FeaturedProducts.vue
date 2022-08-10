@@ -4,11 +4,12 @@
     <div v-if="products.length" class="container">
       <div class="row">
         <div
-          class="card col-lg-2 col-md-3 col-sm-4 col-6 mb-4 mt-4"
+         class="card col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-4 mt-4"
           v-for="product in featuredProducts"
           :key="product.id"
         >
           <router-link :to="{ name: 'Product', params: { id: product.id } }">
+            <div class="img-box">
             <img
               :src="
                 'https://source.unsplash.com/random/?fashion/id' + product.id
@@ -16,6 +17,7 @@
               class="card-img-top"
               alt="Product Image"
             />
+            </div>
           </router-link>
           <div class="card-body">
             <h6 class="card-title">{{ product.title }}</h6>

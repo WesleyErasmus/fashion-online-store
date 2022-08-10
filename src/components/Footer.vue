@@ -110,6 +110,7 @@ export default {
   justify-content: center;
   align-content: center;
   align-items: center;
+  margin-top: 5vw;
 }
 footer {
   /* margin-top: 2rem; */

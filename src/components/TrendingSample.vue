@@ -10,6 +10,7 @@
       <div class="card-group">
         <div v-for="featured in products" :key="featured.id" class="card">
           <router-link :to="{ name: 'Product', params: { id: featured.id } }">
+            <div class="img-box">
             <img
               :src="
                 'https://source.unsplash.com/random/?fashion/id' + featured.id
@@ -17,6 +18,7 @@
               alt="Just Dropped"
               class="card-img-top"
             />
+            </div>
           </router-link>
           <div class="card-body"></div>
           <div class="card-footer">
@@ -63,9 +65,7 @@ export default {
 .see-all {
   color: var(--primary-color) !important;
 }
-.card {
-  padding: var(--card-padding);
-}
+
 .featured-products-container {
   padding: 5rem 0;
 }

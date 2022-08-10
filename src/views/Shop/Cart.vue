@@ -1,42 +1,65 @@
 <template>
   <div id="main" class="cart-page">
-    <h1>Your Cart</h1>
-    <div>Total items in cart: <span class="count">{{ cartLength }}</span></div>
-    <div>Total: <span class="count">R{{ priceTotal }}</span></div>
+    <h1>Your Cart: {{ cartLength }}</h1>
+    <div class="cart-sum-total">
+      <div class="count-text">
+        Total items in cart: <span class="count-number">{{ cartLength }}</span>
+      </div>
+      <div class="total">
+        Total: <span class="total-number">R{{ priceTotal }}</span>
+      </div>
+      <div class="checkout">
+       
+        <RouterLink :to="{ name: 'UserForm' }">
+          <button class="checkout-btn">Proceed To Checkout</button>
+        </RouterLink>
+      </div>
+    </div>
     <div v-if="!shoppingCart.length">Your Cart is empty</div>
-    <div v-if="shoppingCart.length" class="container">
-      <div class="row">
-        <div
-          class="card col-lg-2 col-md-3 col-sm-4 col-6 mb-4 mt-4"
-          v-for="product in shoppingCart"
-          :key="product.id"
-        >
-          <img :src="
+
+    <div v-if="shoppingCart.length" class="cart-items">
+      <!-- parent -->
+      <div class="cart-item" v-for="product in shoppingCart" :key="product.id">
+        <!-- child-1 -->
+        <div class="parent">
+          <div class="img-box child-1">
+            
+            <img
+              :src="
                 'https://source.unsplash.com/random/?fashion/id' + product.id
               "
-          class="card-img-top" alt="Product Image" />
-          <div class="card-body">
-            <h6 class="card-title">{{ product.title }}</h6>
-            <p class="card-text">
-              {{ product.category.name }}
-            </p>
+              class="card-img-top"
+              alt="Product Image"
+            />
+            
           </div>
-          <div class="card-footer">
-            <p class="price">R{{ product.price }}</p>
+
+          <!-- child-2 -->
+          <div class="child-2 col">
+            <div class="card-title">{{ product.title }}</div>
+            <div class="card-text">Product details</div>
+            <div class="">{{ product.description }}</div>
           </div>
-          <button @click="removeFromCart(product)">Remove From Cart</button>
+
+          <!-- child-3 -->
+          <div class="child-3 row">
+            <div class="price">R{{ product.price }}</div>
+          </div>
+        </div>
+        <div class="button-counter">
+          <div>
+            <button class="remove-from-cart" @click="removeFromCart(product)">
+              <span class="cart-icon material-symbols-outlined">
+                remove_shopping_cart </span
+              >Remove
+            </button>
+          </div>
+          <!-- <div>Qty</div> -->
         </div>
       </div>
     </div>
     <div v-else>
       <Spinner />
-    </div>
-
-    <div class="checkout">
-      <div>Total: <span class="count">R{{ priceTotal }}</span></div>
-       <RouterLink :to="{ name: 'UserForm' }">
-      <button class="checkout-btn">Proceed To Checkout</button>
-      </RouterLink>
     </div>
 
     <!-- End of Cart Page Wrapper -->
@@ -98,12 +121,105 @@ export default {
 </script>
 
 <style scoped>
-.checkout {
-  /* position: relative;
-  right: 0; */
+button {
+  background: var(--primary-color);
+  color: #fff;
 }
-.count {
-  color: hsla(160, 100%, 37%, 1);
+button:hover {
+  opacity: 0.8;
+}
+.price {
+  font-size: calc(10px + 0.5rem);
+}
+.total {
+  font-size: calc(20px + 0.4rem);
   font-weight: bold;
 }
+.total-number {
+  color: var(--primary-color);
+}
+.checkout-btn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: var(--card-padding);
+  font-size: calc(12px + 0.4rem);
+}
+.cart-sum-total {
+  position: fixed;
+  top: 9vw;
+  right: 8vw;
+  text-align: center;
+  padding: 2rem;
+  width: 25%;
+  background: #fff;
+  z-index: 2;
+  border-radius: 3px;
+}
+.count-text {
+  font-size: calc(11px + 0.35rem);
+  font-weight: bold;
+}
+.count-number {
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: calc(11px + 0.6em);
+}
+
+/* CART PRODUCT STYLING */
+
+/* Main container */
+.cart-items {
+  width: 65%;
+}
+.card-title {
+  font-size: calc(12px + 0.4rem);
+}
+.cart-item {
+  margin: var(--card-padding);
+  padding: var(--card-padding);
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
+.card-img-top {
+  aspect-ratio: 3 / 4;
+  width: 73px;
+  border-radius: 2px;
+}
+
+.parent {
+  display: flex;
+}
+.child-1 {
+  margin: var(--card-padding);
+  background: transparent;
+}
+
+.child-2 {
+  padding: var(--card-padding);
+}
+.child-3 {
+  padding: var(--card-padding);
+}
+.remove-from-cart {
+  font-size: calc(10px + 0.3rem);
+  font-weight: bold;
+}
+/* Google icon cart */
+.material-symbols-outlined {
+  font-size: 20px;
+}
+
+.cart-icon {
+  position: relative;
+  bottom: -4px;
+  margin-right: 10px;
+}
+.button-counter {
+  display: flex;
+  justify-content: space-between;
+}
+.card-img-top:hover {
+  transform: scale(1);
+}
+
 </style>

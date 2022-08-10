@@ -10,11 +10,13 @@
       <div class="card-group">
         <div v-for="newin in products" :key="newin.id" class="card">
           <router-link :to="{ name: 'Product', params: { id: newin.id } }">
+            <div class="img-box">
             <img
               :src="'https://source.unsplash.com/random/?fashion/' + newin.id"
               alt="Just Dropped"
               class="card-img-top"
             />
+            </div>
           </router-link>
           <div class="card-body"></div>
           <div class="card-footer">
