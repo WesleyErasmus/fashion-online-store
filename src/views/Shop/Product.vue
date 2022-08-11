@@ -3,24 +3,77 @@
     <div class="product">
       <!-- Product template -->
       <div v-if="product">
-        <h1>Product Details</h1>
+        <h1 class="page-heading">Product Details</h1>
 
         <div class="product-container">
           <div class="product-image-container">
             <div class="img-box">
               <img
                 class="product-img"
-                :src="product.images"
-                alt="Product Image"
+                :src="product.images + 0"
+                alt="Product Image 1"
+                @click="toggleModal1"
               />
             </div>
-
-            <!-- Product images array -->
-            <div v-for="item in product.images" :key="item">
-              <div class="img-box">
-                <img class="product-img" :src="item" alt="Product Image" />
-              </div>
+            <!-- <p>Image 1</p> -->
+            <div class="img-box">
+              <img
+                class="product-img"
+                :src="product.images + 1"
+                alt="Product Image 2"
+                @click="toggleModal2"
+              />
             </div>
+            <!-- <p>Image 2</p> -->
+
+            <div class="img-box">
+              <img
+                class="product-img"
+                :src="product.images + 2"
+                alt="Product Image 3"
+                @click="toggleModal3"
+              />
+            </div>
+            <!-- <p>Image 3</p> -->
+            <!-- =============================================== -->
+            <teleport to="#modals" v-if="showModal1">
+              <Modal @close="toggleModal1">
+                <img
+                  class="product-img-zoomed"
+                  :src="product.images + 0"
+                  alt="Product Image 1"
+                />
+                <template v-slot:links>
+                  <button class="close-modal-button" @click="toggleModal1"><span class="material-symbols-outlined"> close </span></button>
+                </template>
+              </Modal>
+            </teleport>
+            <teleport to="#modals" v-if="showModal2">
+              <Modal @close="toggleModal2">
+                <img
+                  class="product-img-zoomed"
+                  :src="product.images + 1"
+                  alt="Product Image 2"
+                />
+                <template v-slot:links>
+                  <button class="close-modal-button" @click="toggleModal2"><span class="material-symbols-outlined"> close </span></button>
+                </template>
+              </Modal>
+            </teleport>
+            <teleport to="#modals" v-if="showModal3">
+              <Modal @close="toggleModal3">
+                <img
+                  class="product-img-zoomed"
+                  :src="product.images + 2"
+                  alt="Product Image 3"
+                />
+                <template v-slot:links>
+                  <button class="close-modal-button" @click="toggleModal3">
+                    <span class="material-symbols-outlined"> close </span>
+                  </button>
+                </template>
+              </Modal>
+            </teleport>
           </div>
 
           <!-- End of product images container -->
@@ -63,17 +116,31 @@
 import axios from "axios";
 import Spinner from "/src/components/Spinner.vue";
 import QuantityCounter from "/src/components/QuantityCounter.vue";
+import Modal from "/src/components/Modal.vue";
 export default {
-  components: { Spinner, QuantityCounter },
+  components: { Spinner, QuantityCounter, Modal },
   props: ["id"],
   data() {
     return {
       // id: this.$route.params.id,
       product: null,
       shoppingCart: [],
+      showModal1: false,
+      showModal2: false,
+      showModal3: false,
     };
   },
   methods: {
+    // Product Zoom Modal
+    toggleModal1() {
+      this.showModal1 = !this.showModal1;
+    },
+    toggleModal2() {
+      this.showModal2 = !this.showModal2;
+    },
+    toggleModal3() {
+      this.showModal3 = !this.showModal3;
+    },
     // Add products to shopping cart function
     addToCart(product) {
       // Ensure that the watch-list array is not empty
@@ -116,16 +183,20 @@ export default {
   },
 };
 
-// =================================================
-
-// ==================================================
 </script>
 
 <style scoped>
+.product-page {
+  box-shadow: var(--card-shadows);
+}
+.product {
+  margin-top: 2vw;
+  padding: 2rem;
+}
 .product-container {
   display: flex;
-  
-  padding: 5rem 0;
+  flex-direction: row;
+  padding: 2vw 0;
 }
 .product-image-container {
   position: relative;
@@ -134,7 +205,7 @@ export default {
   justify-content: center;
   flex-wrap: wrap;
   align-content: center;
-  flex-direction: row;
+  flex-direction: column;
 }
 .img-box {
   display: flex;
@@ -144,15 +215,28 @@ export default {
   margin: 0.2rem;
 }
 .product-img {
-  width: 280px;
+  width: 270px;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 .product-img:hover {
-  z-index: 100;
   position: relative;
   transform: scale(1.2);
   cursor: zoom-in;
+}
+.product-img-zoomed {
+  width: 100%;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+.product-img-zoomed:hover {
+  position: relative;
+}
+.close-modal-button {
+  padding: 0;
+  margin: 0;
+  background: transparent;
 }
 .product-details {
   width: 450px;
@@ -165,6 +249,7 @@ export default {
   font-size: calc(14px + 1rem);
   font-weight: bold;
   padding: 0 0.5rem;
+  color: var(--primary-color);
 }
 .product-id {
   padding: 0 0.5rem;
@@ -190,7 +275,7 @@ export default {
   margin-top: 3rem;
   width: 100%;
   background: var(--primary-color);
-  padding: .5rem;
+  padding: 0.5rem;
   border-radius: 6px;
   color: #fff;
   font-size: calc(13px + 0.5rem);
