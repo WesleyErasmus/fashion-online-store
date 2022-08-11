@@ -124,6 +124,8 @@ export default {
 <style scoped>
 .product-container {
   display: flex;
+  
+  padding: 5rem 0;
 }
 .product-image-container {
   position: relative;

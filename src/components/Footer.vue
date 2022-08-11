@@ -113,8 +113,6 @@ export default {
   margin-top: 5vw;
 }
 footer {
-  /* margin-top: 2rem; */
-  /* background: #242626; */
   background: #2f3131;
   color: #9d9d9d;
 }
@@ -211,6 +209,8 @@ li:hover {
 a {
   color: #fff;
   padding: 1rem;
+   -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 a:hover {
   transform: scale(1.5);

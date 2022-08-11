@@ -29,13 +29,13 @@
     </RouterLink>
 
     <!-- Featured Products -->
-    <TrendingSample />
+    <TrendingSample id="TrendingSample" />
 
     <!-- Home Page Blogs -->
-    <HomePageBlogs/>
+    <HomePageBlogs id="HomePageBlogs" />
 
     <!-- New Products -->
-    <NewProductsSample/>
+    <NewProductsSample id="NewProductsSample" />
    
   </div>
   <!-- End of Home Page Wrapper -->
@@ -89,7 +89,7 @@ a,
 .page-links {
   height: 75px;
   background: #000;
-  margin-top: 2rem;
+  margin-top: 5rem;
   margin-bottom: 2rem;
   display: flex;
   justify-content: space-evenly;
@@ -112,4 +112,11 @@ a,
 .img-banner {
   width: 100%;
 }
+
+#TrendingSample { margin-top: 2rem; }
+
+#HomePageBlogs { margin-top: 2rem; }
+
+
+#NewProductsSample { margin-top: 2rem;}
 </style>
