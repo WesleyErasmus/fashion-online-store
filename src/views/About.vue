@@ -2,40 +2,35 @@
   <div id="main" class="about">
     <!-- About company -->
     <div class="about-company">
-      <h1 class="about-company-heading">Who We Are</h1>
-      <p class="company-bio">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-        aspernatur cumque maxime quibusdam amet repellendus consequuntur. Atque,
-        ut velit quas incidunt aperiam repellendus expedita? Repellendus cumque
-        itaque laudantium quod odio quidem suscipit, adipisci nobis tempore
-        animi eveniet cum ipsam facere quis iure eos quisquam accusantium
-        aliquid numquam enim sed fuga.
-      </p>
-      <p class="company-bio company-bio-end">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus, ut
-        optio. Ullam deserunt suscipit nulla dolores tempore qui beatae
-        perferendis molestias laudantium incidunt consequuntur tenetur sit
-        debitis architecto optio in impedit quisquam quos, quae ducimus quas
-        odio rem. Vel, alias!
-      </p>
+      <div class="about-company-heading">
+        <h1>Who We Are</h1>
+      </div>
+      <!-- Company profile text container -->
+      <div class="company-bio-container">
+        <p class="company-bio-pt1">
+          It was a simple tip of the hat. Grace didn't think that anyone else besides her had even noticed it. It wasn't
+          anything that the average person would notice, let alone remember at the end of the day. That's why it seemed
+          so unbelievable that this little gesture would ultimately change the course of the world.
+        </p>
+        <p class="company-bio-pt2">
+          The light was out on the front porch of the house. This was strange. Judy couldn't remember a time when she
+          had ever seen it out. She hopped out of her car and walked to the door. It was slightly ajar and she knew this
+          meant something terrible. She gently pushed the door open and hall her fears were realized. "Surprise! Happy
+          Birthday!" everyone shouted.
+        </p>
+      </div>
     </div>
 
     <!-- Team members -->
-    <header class="centered-text meet-the-team">
+    <div class="meet-the-team-header">
       <h6>Meet</h6>
       <h1>The Team</h1>
-    </header>
+    </div>
+
+    <!-- Team members for loop -->
     <div v-if="team.length" class="team-members row">
-      <div
-        class="card col-lg-2 col-md-3 col-sm-4 col-6 mb-4 mt-4"
-        v-for="member in team"
-        :key="member"
-      >
-        <img
-          :src="member.portrait"
-          class="card-img-top-meet-team"
-          alt="Team Member"
-        />
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6 mb-4 mt-4" v-for="member in team" :key="member">
+        <img :src="member.portrait" class="card-img-top-meet-team" alt="Team Member" />
         <div class="card-body">
           <h5 class="card-title">{{ member.name }}</h5>
           <p class="card-text">
@@ -47,50 +42,53 @@
         </div>
       </div>
     </div>
+    <!-- Page loading spinner -->
     <div v-else>
       <Spinner />
     </div>
 
-    <!-- Endorsements -->
-    <div class="endorsements-container">
-      <h1 class="centered-text">Endorsements</h1>
+    <!-- Endorsements Wrapper -->
+    <div class="endorsements-wrapper">
+      <h1 class="endorsement-container-heading">Endorsements</h1>
 
-      <span class="material-symbols-outlined"> workspace_premium </span>
+      <!-- Google fonts icon -->
+      <span class="material-symbols-outlined"> thumb_up_off </span>
 
-      <!-- <span class="material-symbols-outlined"> thumb_up_off </span> -->
+      <!-- Endorsements comments container -->
+      <div class="customer-endorsements-container"></div>
 
-      <!-- <span class="material-symbols-outlined verified-icon"> verified </span> -->
-  <div class="customer-endorsements"></div>
-      <p>
+      <div class="endorsement-comment">
         "It's just amazing. Fashion has got everything I need. The service was
-        excellent. I'd be lost without fashion." <span class="endorser"> - Aub P.</span>
-      </p>
+        excellent. I'd be lost without fashion." <span class="endorser-name"> - Aub P.</span>
+      </div>
 
-      <p>
+      <div class="endorsement-comment">
         "It's just amazing. We can't understand how we've been living without
-        you." <span class="endorser"> - Lurline C.</span>
-      </p>
+        you." <span class="endorser-name"> - Lurline C.</span>
+      </div>
 
-      <p>
+      <div class="endorsement-comment">
         "I can't say enough about your store. It really saves me time and
         effort. Your store is exactly what I have been looking for. I love your
-        store." <span class="endorser"> - Shanie E.</span>
-      </p>
+        store." <span class="endorser-name"> - Shanie E.</span>
+      </div>
 
-      <p>
+      <div class="endorsement-comment">
         "Great job, I will definitely be ordering again! Your company is truly
-        upstanding and is behind its products 100%." <span class="endorser"> - Ruby Z.</span>
-      </p>
+        upstanding and is behind its products 100%." <span class="endorser-name"> - Ruby Z.</span>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+// Page loading spinner component
 import Spinner from "/src/components/Spinner.vue";
 export default {
   components: { Spinner },
   data() {
     return {
+      // Array containing team member info
       team: [],
     };
   },
@@ -105,63 +103,102 @@ export default {
 </script>
 
 <style scoped>
+
+/* About company profile container */
 .about-company {
   padding: 5rem 0;
   text-align: center;
 }
+
+/* About Page heading */
 .about-company-heading {
-  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-color);
+  padding: 2vw;
+  color: rgb(236, 236, 236);
 }
-.company-bio, .customer-endorsements {
-  margin-bottom: 2rem;
-  font-size: calc(14px + 0.3rem);
+
+/* Profile text container */
+.company-bio-container {
+  color: rgb(112, 112, 112);
+  padding: 3vw;
+  font-size: calc(11px + 0.35rem);
+  box-shadow: var(--card-shadows);
 }
-.company-bio-end {
-   margin-bottom: 5rem;
+
+/* Company Profile text container */
+.company-bio-pt1 {
+  margin-bottom: 1.5vw;
 }
-.endorsements-container {
+
+/* Meet the team container */
+.team-members {
+  margin-bottom: 5rem;
+}
+
+/* Meet the team container header */
+.meet-the-team-header {
+  display: block;
+  margin: 0 auto;
   text-align: center;
-  padding: 5rem 0;
-   font-size: calc(13px + 0.3rem);
-    margin-bottom: 5rem;
 }
-.endorser {
-  color: var(--primary-color);
-  font-weight: bold;
-  font-size: calc(12px + 0.3rem);
+
+/* Meet the team cards */
+.card {
+  width: 33.3333333%;
 }
-.centered-text {
-  text-align: center;
+
+.card-img-top-meet-team {
+  aspect-ratio: 2 / 3;
+  border-radius: 0;
 }
+
+/* Team member details text size */
 .card-text {
   font-size: calc(10px + 0.4rem);
 }
-.verified-icon {
+
+/* Customer endorsement container */
+.endorsements-wrapper {
+  text-align: center;
+  font-size: calc(13px + 0.3rem);
+  padding: 4vw;
+  background: rgb(223, 223, 223);
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
+.endorsement-container-heading {
+  margin-bottom: 2vw;
+  border-bottom: 1px solid #fff;
+}
+
+/* Google fonts icon for endorsements header */
+.material-symbols-outlined {
+  font-size: 32px;
+  margin-left: 9px;
   position: relative;
   bottom: -4px;
   margin-right: 13px;
 }
-.material-symbols-outlined {
-  font-size: 32px;
-  margin-left: 9px;
+
+/* Font size for endorsement container */
+.customer-endorsements-container {
+  font-size: calc(14px + 0.3rem);
 }
-/* Meet the team */
-header {
-  display: inline-block;
-  max-width: auto;
+
+.endorsement-comment {
+  border-radius: 7px;
+  padding: var(--card-padding);
+  margin: var(--card-padding);
 }
-.team-members {
-  margin-bottom: 5rem;
-}
-.meet-the-team {
-  display: block;
-  margin: 0 auto;
-}
-.card {
-  width: 33.3333333%;
-}
-.card-img-top-meet-team {
-  aspect-ratio: 2 / 3;
-  border-radius: 0;
+
+.endorser-name {
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: calc(12px + 0.3rem);
 }
 </style>
