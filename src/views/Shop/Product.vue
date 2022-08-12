@@ -176,6 +176,9 @@ export default {
 
       // Save to local storage function
       this.saveToLocalStorage();
+
+      // Product added message
+      this.addToCartSuccessToast()
     },
 
     // Save products to cart function

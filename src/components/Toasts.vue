@@ -4,9 +4,6 @@
     <!-- Add to cart success message -->
     <div id="snackbar">
         <p>Product Successfully Added To Cart!</p>
-        <router-link :to="{ name: 'Cart' }">
-            <p>View Your Cart</p>
-        </router-link>
     </div>
 
 
