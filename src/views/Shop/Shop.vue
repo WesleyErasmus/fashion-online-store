@@ -1,16 +1,22 @@
 <template>
   <div id="main" class="shop-page">
-    <h1>Shop All Our Collections</h1>
+    <h1>Shop Our Whole Collection</h1>
     <div v-if="products.length" class="container">
       <div class="row">
-        <div class="card col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 mb-4 mt-4" v-for="product in products"
-          :key="product.id">
+        <div
+          class="card col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 mb-4 mt-4"
+          v-for="product in products"
+          :key="product.id"
+        >
           <router-link :to="{ name: 'Product', params: { id: product.id } }">
-            <!-- :src="product.images" -->
             <div class="img-box">
-              <img :src="
-                'https://source.unsplash.com/random/?fashion/id' + product.id
-              " class="card-img-top" alt="Product Image" />
+              <img
+                :src="
+                  'https://source.unsplash.com/random/?fashion/id' + product.id
+                "
+                class="card-img-top"
+                alt="Product Image"
+              />
             </div>
           </router-link>
           <div class="card-body">
@@ -44,8 +50,7 @@ export default {
       products: [],
     };
   },
-  methods: {
-  },
+  methods: {},
   mounted() {
     axios.get("https://api.escuelajs.co/api/v1/products/").then((response) => {
       this.products = response.data;
@@ -59,5 +64,4 @@ export default {
 .shop-page h1 {
   margin-bottom: 3rem;
 }
-
 </style>

@@ -4,8 +4,9 @@
     <div class="about-company">
       <div class="about-company-heading">
         <h1>Who We Are</h1>
-        <!-- <span><img class="logo-image" src="../assets/logopicture.png" alt="Logo Picture"></span> -->
       </div>
+
+
       <!-- Company profile text container -->
       <div class="company-bio-container">
         <p class="company-bio-pt1">
@@ -22,47 +23,60 @@
       </div>
     </div>
 
+    
     <!-- Team members -->
     <div class="meet-the-team-header">
       <h6>Meet</h6>
       <h1>The Team</h1>
     </div>
 
+
     <!-- Team members for loop -->
-    <div v-if="team.length" class="team-members row">
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6 mb-4 mt-4" v-for="member in team" :key="member">
-        <img :src="member.portrait" class="card-img-top-meet-team" alt="Team Member" />
-        <div class="card-body">
-          <h5 class="card-title">{{ member.name }}</h5>
-          <p class="card-text">
-            {{ member.job_title }}
-          </p>
-          <p class="card-description">
-            <small class="text-muted">{{ member.bio }}</small>
-          </p>
+      <!-- Team member cards wrapper -->
+      <div v-if="team.length" class="flip-card-wrapper">
+        <div class="flip-card-container">
+          <div v-for="member in team" :key="member.id">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img class="flip-card-img" :src="member.portrait" alt="Team Member Image">
+                </div>
+                <div class="flip-card-back">
+                  <h1>{{ member.name }}</h1>
+                  <p>{{ member.job_title }}</p>
+                  <p>{{ member.bio }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      <!-- End of card wrapper -->
+
+
     <!-- Page loading spinner -->
     <div v-else>
       <Spinner />
     </div>
 
+    
     <!-- Endorsements Wrapper -->
     <div class="endorsements-wrapper">
       <div class="logo-container">
         <img class="logo-image" src="../assets/logowords.png" alt="Logo-Words">
       </div>
 
-      <!-- Google fonts icon -->
+    
+    <!-- Google fonts icon -->
       <span class="material-symbols-outlined"> thumb_up_off </span>
 
-      <!-- Endorsements comments container -->
+    
+    <!-- Endorsements comments container -->
       <div class="customer-endorsements-container"></div>
 
       <div class="endorsement-comment">
-        "It's just amazing. Fashion has got everything I need. The service was
-        excellent. I'd be lost without fashion." <span class="endorser-name"> - Aub P.</span>
+        "It's just amazing. Atlas Fashion has got everything I need. The service was
+        excellent. I'd be lost without Atlas fashion." <span class="endorser-name"> - Aub P.</span>
       </div>
 
       <div class="endorsement-comment">
@@ -82,6 +96,8 @@
       </div>
     </div>
   </div>
+
+
 </template>
 
 <script>
@@ -108,9 +124,6 @@ export default {
 <style scoped>
 
 
-
-
-
 /* About company profile container */
 .about-company {
   padding: 5rem 0;
@@ -125,17 +138,17 @@ export default {
   align-items: center;
   justify-content: center;
   background: #000;
-  padding: 2vw;
+  padding: 4.5vw;
   color: #fff;
 }
-
+/* Google fonts thumbs up icon */
 .material-symbols-outlined {
   color: var(--primary-color);
 }
 
 /* Profile text container */
 .company-bio-container {
-  color: rgb(112, 112, 112);
+  color: #000;
   padding: 3vw;
   font-size: calc(11px + 0.35rem);
   box-shadow: var(--card-shadows);
@@ -146,11 +159,7 @@ export default {
   margin-bottom: 1.5vw;
 }
 
-/* Meet the team container */
-.team-members {
-  margin-bottom: 5rem;
-}
-
+/* Meet the team styling */
 /* Meet the team container header */
 .meet-the-team-header {
   display: block;
@@ -158,22 +167,82 @@ export default {
   text-align: center;
 }
 
-/* Meet the team cards */
-.card {
-  width: 33.3333333%;
+/* Meet the team flip card wrapper */
+.flip-card-wrapper {
+  max-width: 1280px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 5rem;
 }
 
-.card-img-top-meet-team {
+.flip-card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+}
+/* Contains image and card content */
+.flip-card {
+  padding: var(--card-padding);
+  background-color: transparent;
+  width: calc(261px + 8vw);
+  height: calc(470px + 8vw);
+  /* https: //developer.mozilla.org/en-US/docs/Web/CSS/transform-function/perspective */
+  perspective: 1000px;
+}
+
+.flip-card-img {
   aspect-ratio: 2 / 3;
-  border-radius: 0;
+  width: 100%;
 }
 
-/* Team member details text size */
-.card-text {
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  /* https: //developer.mozilla.org/en-US/docs/Web/CSS/transform-style */
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+/* Contains team member image */
+.flip-card-front {
+  background-color: transparent;
+  color: black;
+}
+/* Contains team member info */
+.flip-card-back {
   font-size: calc(10px + 0.4rem);
+  background: var(--primary-color);
+  color: #000;
+  transform: rotateY(180deg);
+  padding: var(--card-padding);
 }
 
-/* Customer endorsement container */
+/* Customer endorsements styling */
 .endorsements-wrapper {
   text-align: center;
   font-size: calc(13px + 0.3rem);
@@ -209,9 +278,15 @@ export default {
   font-size: calc(12px + 0.3rem);
 }
 
-
-
 /* MEDIA QUERIES */
+@media screen and (min-width: 1601px) and (max-width: 1920px) {}
+
+@media screen and (min-width: 1281px) and (max-width: 1600px) {}
+
+@media screen and (min-width: 841px) and (max-width: 1280px) {
+}
+
+/* ============= */
 @media screen and (min-width: 841px) and (max-width: 1280px) {
   .company-bio-container {
     font-size: calc(11px + 0.35rem);
