@@ -1,20 +1,7 @@
 <template>
   <div id="main" class="cart-page">
     <h1 class="large-cart-heading">Your Cart: {{ cartLength }}</h1>
-    <div class="cart-sum-total">
-      <div class="count-text">
-        Total items in cart: <span class="count-number">{{ cartLength }}</span>
-      </div>
-      <div class="total">
-        Total: <span class="total-number">R{{ priceTotal }}</span>
-      </div>
-      <div class="checkout">
-
-        <!-- <RouterLink :to="{ name: 'UserForm' }"> -->
-        <button class="checkout-btn">Proceed To Checkout</button>
-        <!-- </RouterLink> -->
-      </div>
-    </div>
+    <!--  -->
     <div v-if="!shoppingCart.length">Your Cart is empty</div>
 
     <div v-if="shoppingCart.length" class="cart-items">
@@ -51,6 +38,20 @@
           </div>
           <!-- <div>Qty</div> -->
         </div>
+      </div>
+    </div>
+    <div class="cart-sum-total">
+      <div class="count-text">
+        Total items in cart: <span class="count-number">{{ cartLength }}</span>
+      </div>
+      <div class="total">
+        Total: <span class="total-number">R{{ priceTotal }}</span>
+      </div>
+      <div class="checkout">
+
+        <!-- <RouterLink :to="{ name: 'UserForm' }"> -->
+        <button class="checkout-btn">Proceed To Checkout</button>
+        <!-- </RouterLink> -->
       </div>
     </div>
 
@@ -111,6 +112,7 @@ export default {
 </script>
 
 <style scoped>
+
 
 
 
@@ -246,9 +248,12 @@ button:hover {
     right: 8vw;
     width: 30%;
   }
+    .checkout-btn {
+      font-size: calc(12px + 0.3rem);
+    }
 
   .cart-items {
-    width: 100%;
+    width: 60%;
   }
 
   .card-img-top {
