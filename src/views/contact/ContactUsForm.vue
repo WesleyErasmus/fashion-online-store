@@ -3,7 +3,7 @@
     <div class="message-container">
         <div class="message-heading">Let's Start a Conversation</div>
         <p class="message-subheading">
-            Send us a message and let us know about your experience
+            Send us a message and let us know about your shopping experience
         </p>
 
         <!-- User form wrapper -->
@@ -81,6 +81,7 @@ export default {
         };
     },
     mounted() {
+        // Store user message form data to local storage
         if (localStorage.getItem("customerMessages")) {
             try {
                 this.customerMessages = JSON.parse(
@@ -115,11 +116,11 @@ export default {
                 return;
             }
 
-            // Form validations
-
             // Empty error message array
             this.errors = [];
-            console.log(this.errors);
+
+            
+            // Form validations
 
             // Name input field validation
             if (!this.storedUserMessage.name) {
@@ -148,7 +149,8 @@ export default {
             this.customerMessages.push(this.storedUserMessage);
             this.saveSubscriber();
 
-            // Clears input fields after submit
+
+            // Form resets
             this.storedUserMessage.name = null;
             this.storedUserMessage.email = null;
             this.storedUserMessage.message = null;
@@ -185,9 +187,8 @@ export default {
 }
 
 .message-heading {
-    font-size: calc(25px + 0.5rem);
+    font-size: calc(22px + 0.4rem);
     color: #fff;
-    color: var(--secondary-grey);
 }
 
 .message-subheading {
@@ -210,18 +211,18 @@ export default {
     display: flex;
 }
 
+
 /* Username input field */
 .username-input {
     margin-right: 7px;
 }
+
 
 /* User email input field */
 .email-input {
     margin-left: 7px;
 }
 
-/* User message input field */
-.message-text-area {}
 
 /* Message us form submit button */
 .sbmt-btn {

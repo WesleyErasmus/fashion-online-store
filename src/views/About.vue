@@ -43,7 +43,7 @@
                 </div>
                 <div class="flip-card-back">
                   <h1>{{ member.name }}</h1>
-                  <p>{{ member.job_title }}</p>
+                  <p class="flip-card-job-title-text">{{ member.job_title }}</p>
                   <p>{{ member.bio }}</p>
                 </div>
               </div>
@@ -122,7 +122,6 @@ export default {
 </script>
 
 <style scoped>
-
 
 /* About company profile container */
 .about-company {
@@ -242,6 +241,11 @@ export default {
   padding: var(--card-padding);
 }
 
+.flip-card-job-title-text {
+  color: #fff;
+  font-weight: bold;
+}
+
 /* Customer endorsements styling */
 .endorsements-wrapper {
   text-align: center;
@@ -279,14 +283,6 @@ export default {
 }
 
 /* MEDIA QUERIES */
-@media screen and (min-width: 1601px) and (max-width: 1920px) {}
-
-@media screen and (min-width: 1281px) and (max-width: 1600px) {}
-
-@media screen and (min-width: 841px) and (max-width: 1280px) {
-}
-
-/* ============= */
 @media screen and (min-width: 841px) and (max-width: 1280px) {
   .company-bio-container {
     font-size: calc(11px + 0.35rem);
@@ -301,6 +297,7 @@ export default {
     font-size: calc(12px + 0.3rem);
   }
 }
+
 
 @media screen and (min-width: 662px) and (max-width: 840px) {
   .company-bio-container {
@@ -323,6 +320,7 @@ export default {
     font-size: calc(10px + 0.3rem);
   }
 }
+
 
 @media screen and (min-width: 481px) and (max-width: 661px) {
   .company-bio-container {
@@ -353,6 +351,7 @@ export default {
     font-size: calc(10px + 0.3rem);
   }
 }
+
 
 @media screen and (min-width: 0) and (max-width: 480px) {
   .company-bio-container {

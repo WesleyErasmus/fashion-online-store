@@ -1,11 +1,18 @@
 <template>
+<!-- Contact page wrapper -->
   <div id="main" class="contact-page">
-    <!-- Contact page header -->
-    <header class="contact-page-header">
+
+
+    <!-- Contact page header and header container -->
+    <header class="contact-page-header-container">
       <div class="contact-page-header">
+        
         <!-- Heading and subheading -->
         <h1>We'd Love To Hear From YOU</h1>
-        <p class="centered-text-sm">Connect with us on social media</p>
+        
+        <!-- Subheading -->
+        <p class="centered-text-sm">Connect with us on social media</p>  
+        
         <!-- Social media links -->
       </div>
       <div class="sm-links">
@@ -36,7 +43,6 @@
     <div class="need-help-container">
       <h1 class="need-help">Need help?</h1>
       <p>
-
         Contact our help team on our WhatsApp line
         <a class="help-line-number">{{ HelpLine }}</a> or email <a href="mailto:help@atlas.co.za?">{{ HelpEmail }}</a>.
       </p>
@@ -45,6 +51,7 @@
 </template>
 
 <script>
+// Components import
 import ContactUsForm from "./ContactUsForm.vue"
 import GoogleMaps from "./GoogleMaps.vue"
 export default {
@@ -61,6 +68,7 @@ export default {
 </script>
 
 <style scoped>
+
 /* Page Header */
 header {
   height: 17vw;
@@ -75,6 +83,7 @@ header {
   box-shadow: var(--card-shadows);
 }
 
+
 /* Social media header icons */
 .centered-text-sm {
   text-align: center;
@@ -83,15 +92,18 @@ header {
   font-weight: bold;
 }
 
+
 /* Social media header icons */
 .sm-links {
   padding-top: 1rem;
 }
 
+
 /* Social media header icons */
 .sm-icon-item {
   padding: var(--card-padding);
 }
+
 
 /* Social media header icons styling */
 .fa-brands {
@@ -101,12 +113,14 @@ header {
   transition: 0.3s ease-in-out;
 }
 
+
 /* Social media header icons hover */
 .fa-brands:hover {
   transform: scale(1.5);
   background: none;
   color: var(--primary-color);
 }
+
 
 /* Help services container */
 .need-help-container {
@@ -115,9 +129,10 @@ header {
   background: rgb(230, 230, 230);
 }
 
+
 /* MEDIA QUERIES */
 @media screen and (min-width: 841px) and (max-width: 1280px) {
-  header {
+  .contact-page-header-container {
     height: 26vw;
   }
 
@@ -132,8 +147,9 @@ header {
   }
 }
 
+
 @media screen and (min-width: 662px) and (max-width: 840px) {
-  header {
+  .contact-page-header-container {
     height: 33vw;
   }
 
@@ -150,7 +166,7 @@ header {
 
 
 @media screen and (min-width: 481px) and (max-width: 661px) {
-  header {
+  .contact-page-header-container {
     height: 43vw;
   }
 
@@ -173,8 +189,9 @@ header {
   }
 }
 
+
 @media screen and (min-width: 0) and (max-width: 480px) {
-  header {
+  .contact-page-header-container {
     height: 43vw;
   }
 

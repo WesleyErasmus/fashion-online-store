@@ -1,13 +1,22 @@
 <template>
+
+<!-- Shopping page -->
+
   <div id="main" class="shop-page">
+    <!-- Page header -->
     <h1>Shop Our Whole Collection</h1>
+
+    <!-- V-if to show spinner component while products load -->
     <div v-if="products.length" class="container">
       <div class="row">
+        
+        <!-- V-for loop -->
         <div
           class="card col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 mb-4 mt-4"
           v-for="product in products"
           :key="product.id"
         >
+        <!-- Router link to Product gallery page -->
           <router-link :to="{ name: 'Product', params: { id: product.id } }">
             <div class="img-box">
               <img
@@ -19,6 +28,8 @@
               />
             </div>
           </router-link>
+
+
           <div class="card-body">
             <h6 class="card-title">{{ product.title }}</h6>
             <p class="card-text">
@@ -31,6 +42,8 @@
         </div>
       </div>
     </div>
+
+    <!-- V-else spinner -->
     <div v-else>
       <Spinner />
     </div>
@@ -50,7 +63,6 @@ export default {
       products: [],
     };
   },
-  methods: {},
   mounted() {
     axios.get("https://api.escuelajs.co/api/v1/products/").then((response) => {
       this.products = response.data;

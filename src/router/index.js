@@ -1,4 +1,8 @@
+// Routing history
 import { createRouter, createWebHistory } from 'vue-router'
+
+
+// Pages and component imports
 import Home from '../views/home/Home.vue'
 import Shop from '../views/shop/Shop.vue'
 import Product from "../views/shop/Product.vue";
@@ -9,6 +13,8 @@ import FeaturedProducts from "../views/FeaturedProducts.vue";
 import NewProducts from "../views/NewProducts.vue";
 import NotFound from "../views/NotFound.vue";
 
+
+// Array for routing directories
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [

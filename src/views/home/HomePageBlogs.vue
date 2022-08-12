@@ -1,6 +1,10 @@
 <template>
   <!-- Home Page Blogs -->
+
+  <!-- Blogs container -->
     <div class="blog-posts-container row">
+
+
       <!-- # Blog 1 -->
       <div class="col">
         <a href="https://www.vogue.com/tag/misc/winter-fashion" target="_blank">
@@ -22,6 +26,7 @@
         </a>
       </div>
 
+      
       <!-- # Blog 2 -->
       <div class="col">
         <a
@@ -71,6 +76,8 @@ a,
   padding: var(--card-padding);
 }
 /* Blogs */
+
+
 /* Transparent black filter over blog images */
 .card-img-overlay {
   background: rgba(0, 0, 0, 0.54);
@@ -81,29 +88,36 @@ a,
   align-content: center;
   flex-direction: column;
 }
+
+
 /* Blog card images */
 .card-img {
   border-radius: 0;
 }
+
+
 /* Card column containers */
 .col {
   padding: var(--card-padding);
 }
-/* Card titles for blogs */
+
+
+/* Card titles that says blogs */
 .card-title-1 {
   font-style: italic;
   color: var(--primary-color);
   font-weight: bold;
   font-size: calc(12px + 0.4rem);
 }
+
+/* Card blog topic title */
 .card-title-2 {
   font-weight: bold;
   font-size: calc(15px + 0.6rem);
 }
-.blog-description {
 
-}
 /* End of Blogs */
+
 
 /* MEDIA QUERIES */
 @media screen and (min-width: 481px) and (max-width: 661px) {
@@ -111,6 +125,7 @@ a,
     display: none;
   }
 }
+
 
 @media screen and (min-width: 0) and (max-width: 480px) {
 .card-title-1 {

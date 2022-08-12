@@ -1,23 +1,27 @@
 <template>
   <div id="main" class="cart-page">
+
+    <!-- Page heading -->
     <h1 class="large-cart-heading">Your Cart: {{ cartLength }}</h1>
-    <!--  -->
+    
+    <!-- V-if that displays empty cart message if cart is empty -->
     <div v-if="!shoppingCart.length">Your Cart is empty</div>
 
+    <!-- V-if used to display spinner component while products are loading -->
     <div v-if="shoppingCart.length" class="cart-items">
-      <!-- parent -->
+
+      <!-- flex parent container to display product content-->
       <div class="cart-item" v-for="product in shoppingCart" :key="product.id">
-        <!-- child-1 -->
+    
+    <!-- flex child-1 container -->
         <div class="parent">
           <div class="img-box child-1">
-
             <img :src="
               'https://source.unsplash.com/random/?fashion/id' + product.id
             " class="card-img-top" alt="Product Image" />
-
           </div>
 
-          <!-- child-2 -->
+          <!-- flex child-2 container -->
           <div class="child-2 col">
             <div class="card-title">{{ product.title }}</div>
             <div class="card-text">Product details</div>
@@ -28,7 +32,11 @@
           <div class="child-3 row">
             <div class="price">R{{ product.price }}</div>
           </div>
+
+          <!-- End of parent container -->
         </div>
+
+        <!-- Container for remove from cart button -->
         <div class="button-counter">
           <div>
             <button class="remove-from-cart" @click="removeFromCart(product)">
@@ -36,36 +44,44 @@
                 remove_shopping_cart </span>Remove
             </button>
           </div>
-          <!-- <div>Qty</div> -->
         </div>
       </div>
     </div>
+
+
+<!-- Cart array length and price total container -->
     <div class="cart-sum-total">
+
+      <!-- Displays amount of items in the cart -->
       <div class="count-text">
         Total items in cart: <span class="count-number">{{ cartLength }}</span>
       </div>
+
+      <!-- Displays total cart price -->
       <div class="total">
         Total: <span class="total-number">R{{ priceTotal }}</span>
       </div>
+
+      <!-- Checkout btn container -->
       <div class="checkout">
 
-        <!-- <RouterLink :to="{ name: 'UserForm' }"> -->
+       <!-- Proceed to checkout button -->
         <button class="checkout-btn">Proceed To Checkout</button>
-        <!-- </RouterLink> -->
       </div>
     </div>
 
     <!-- End of Cart Page Wrapper -->
   </div>
 
-  <!-- Remove cart message -->
+  
+  <!-- Remove cart message toast-->
   <Toasts />
 </template>
 
 <script>
+// Components import
 import Toasts from "/src/components/Toasts.vue";
 export default {
-  
   components: { Toasts },
   data() {
     return {
@@ -74,9 +90,13 @@ export default {
     };
   },
   computed: {
+
+    // Displays cart array length
     cartLength() {
       return this.shoppingCart.length;
     },
+
+    // Calculates total price of products in cart array
     priceTotal() {
       let total = 0;
       this.shoppingCart.forEach((product, i) => {
@@ -85,50 +105,40 @@ export default {
       return total;
     },
   },
-   watch: {
-    shoppingCart: {
-       handler: function (val) {
-        this.$emit('update-books-count', val.length)
-        console.log('caught!');
-      },
-      deep: true
-    },
-
-  },
   methods: {
     // Remove from success message
     itemRemovedMessage() {
       var x = document.getElementById("snackbar3");
       x.className = "show";
       setTimeout(function () {
+        // Refreshes page after item is removed from cart
+        window.location.reload();
         x.className = x.className.replace("show", "");
-      }, 3000);
+      }, 1000);
     },
-    // Remove movies from watch-list function
+    
+    
+    // Remove products from cart function
     removeFromCart(product) {
       const remove = this.shoppingCart.filter((i) => i != product);
 
       this.shoppingCart = remove;
 
+      // Update cart array
       this.saveToLocalStorage();
 
+      // Product removed message
       this.itemRemovedMessage()
     },
 
-    // Save movies to watch-list function
+    // Updates local storage function
     saveToLocalStorage() {
       const parsed = JSON.stringify(this.shoppingCart);
-      localStorage.setItem("shoppingCart", parsed);
-
-      console.log(this.shoppingCart);
-
-      // Refreshes page after item is removed from cart
-      window.location.reload();
-      
+      localStorage.setItem("shoppingCart", parsed);      
     },
   },
   mounted() {
-    // Display local storage movies in the DOM
+    // Display local storage products in the DOM
     if (localStorage.getItem("shoppingCart")) {
       try {
         this.shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
@@ -140,12 +150,17 @@ export default {
 };
 </script>
 
+
+
 <style scoped>
 
+
+/* Prevents that cart page from looking squashed when cart is empty */
 .cart-page {
   min-height: 69vh;
 }
 
+/* Cart length & total display & submit btn container */
 .cart-sum-total {
   position: fixed;
   top: 9vw;
@@ -158,16 +173,19 @@ export default {
   border-radius: 3px;
 }
 
+/* Cart count text */
 .count-text {
   font-size: calc(11px + 0.35rem);
   font-weight: bold;
 }
 
+/* Cart count number text */
 .count-number {
   color: var(--primary-color);
   font-weight: bold;
   font-size: calc(11px + 0.6em);
 }
+
 
 /* CART PRODUCT STYLING */
 
@@ -176,63 +194,69 @@ export default {
   width: 65%;
 }
 
+/* Cart item title */
 .card-title {
   font-size: calc(12px + 0.4rem);
 }
 
+/* Cart item container */
 .cart-item {
   margin: var(--card-padding);
   padding: var(--card-padding);
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 
+/* Product image */
 .card-img-top {
   aspect-ratio: 3 / 4;
   width: 73px;
   border-radius: 2px;
 }
-/* Images container parent */
+
+/* Cart item parent container for flex */
 .parent {
   display: flex;
 }
 
-/* Images container child container */
+/* Cart item child container for flex */
 .child-1 {
   margin: var(--card-padding);
   background: transparent;
 }
 
-/* Images container child container */
+/* Cart item child container for flex */
 .child-2 {
   padding: var(--card-padding);
 }
 
-/* Images container child container */
+/* Cart item child container for flex */
 .child-3 {
   padding: var(--card-padding);
 }
 
+/* Remove from cart button */
 .remove-from-cart {
   font-size: calc(10px + 0.3rem);
   font-weight: bold;
 }
 
-/* Google icon cart */
-.material-symbols-outlined {
-  font-size: 20px;
-}
 
+/* Google cart icon */
 .cart-icon {
-  position: relative;
-  bottom: -4px;
-  margin-right: 10px;
+  font-size: 20px;
+    position: relative;
+    bottom: -4px;
+    margin-right: 10px;
 }
 
+
+/* Container for remove from cart button */
 .button-counter {
   display: flex;
   justify-content: space-between;
 }
 
+/* Prevent zoom on hover */
 .card-img-top:hover {
   transform: scale(1);
 }
@@ -250,19 +274,23 @@ button:hover {
   opacity: 0.8;
 }
 
+/* Prices font size */
 .price {
   font-size: calc(10px + 0.5rem);
 }
 
+/* Total text font size */
 .total {
   font-size: calc(20px + 0.4rem);
   font-weight: bold;
 }
 
+/* Total number color */
 .total-number {
   color: var(--primary-color);
 }
 
+/* Checkout button */
 .checkout-btn {
   width: 100%;
   margin-top: 1rem;
@@ -299,6 +327,7 @@ button:hover {
   }
 }
 
+
 @media screen and (min-width: 662px) and (max-width: 840px) {
 
   .cart-sum-total {
@@ -324,6 +353,7 @@ button:hover {
       display: none;
     }
 }
+
 
 @media screen and (min-width: 481px) and (max-width: 661px) {
 
@@ -352,6 +382,7 @@ button:hover {
     display: none;
   }
 }
+
 
 @media screen and (min-width: 0) and (max-width: 480px) {
   .cart-sum-total {

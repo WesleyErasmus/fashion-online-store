@@ -1,14 +1,22 @@
 <template>
   <!-- Page wrapper -->
   <div id="main" class="home-page">
+
+
     <!-- Home page header section -->
     <header class="home-page-header">
+
+
       <!-- Featured and New Page links -->
       <div class="page-links">
+
+
         <!-- New products page link -->
         <RouterLink :to="{ name: 'NewProducts' }">
           <div class="new-products-link">NEW PRODUCTS</div>
         </RouterLink>
+
+
         <!-- Featured products page link -->
         <RouterLink :to="{ name: 'FeaturedProducts' }">
           <div class="feature-products-link">FEATURED PRODUCTS</div>
@@ -16,6 +24,7 @@
       </div>
     </header>
     <!-- End of home page header section -->
+
 
     <!-- Home page Image Banner -->
     <RouterLink :to="{ name: 'FeaturedProducts' }">
@@ -25,20 +34,25 @@
       </div>
     </RouterLink>
 
+
     <!-- Featured Products -->
     <TrendingSample id="TrendingSample" />
+
 
     <!-- Home Page Blogs -->
     <HomePageBlogs id="HomePageBlogs" />
 
+
     <!-- New Products -->
     <NewProductsSample id="NewProductsSample" />
+
 
   </div>
   <!-- End of Home Page Wrapper -->
 </template>
 
 <script>
+// Component imports
 import TrendingSample from './TrendingSample.vue'
 import NewProductsSample from './NewProductsSample.vue'
 import HomePageBlogs from './HomePageBlogs.vue'
@@ -72,6 +86,7 @@ a,
   transition: 0.4s;
 }
 
+
 /* Link Hover color */
 @media (hover: hover) {
   a:hover {
@@ -79,12 +94,14 @@ a,
   }
 }
 
+
 .home-page {
   padding: 1rem;
   max-width: 1280px;
   display: block;
   margin: 0 auto;
 }
+
 
 /* Top banner links container */
 .page-links {
@@ -98,6 +115,7 @@ a,
   align-items: center;
 }
 
+/* Links in block below app header */
 .new-products-link,
 .feature-products-link {
   color: #bbb;
@@ -109,14 +127,15 @@ a,
   color: #fff;
   cursor: pointer;
 }
-
 /* End of top banner links container */
+
 
 /* Home page top banner img */
 .img-banner {
   width: 100%;
 }
 
+/* Component padding */
 #TrendingSample {
   margin-top: 2rem;
 }
@@ -129,6 +148,7 @@ a,
   margin-top: 2rem;
 }
 
+
 /* MEDIA QUERIES */
 @media screen and (min-width: 662px) and (max-width: 840px) {
 
@@ -136,8 +156,8 @@ a,
   .feature-products-link {
     font-size: calc(14px + 0.5rem);
   }
-
 }
+
 
 @media screen and (min-width: 481px) and (max-width: 661px) {
 
@@ -145,8 +165,8 @@ a,
   .feature-products-link {
     font-size: calc(11px + 0.4rem);
   }
-
 }
+
 
 @media screen and (min-width: 0) and (max-width: 480px) {
 

@@ -1,7 +1,10 @@
 <template>
   <div id="footer" class="footer">
     <div class="sale-banner">SALE COMING SOON</div>
-    <footer class="footer-wrapper">
+
+
+    <!-- Footer wrapper -->
+    <div class="footer-wrapper">
       <div class="footer-inner">
         <main>
           <div class="footer-links">
@@ -13,6 +16,8 @@
               <li>Retail outlets</li>
             </ul>
 
+
+            <!-- Emulation footer links -->
             <ul class="footer-links-container">
               <li class="link-heading">Partners</li>
               <li>Customer service</li>
@@ -21,6 +26,7 @@
               <li>Returns policy</li>
             </ul>
 
+            <!-- Emulation footer links -->
             <ul class="footer-links-container">
               <li class="link-heading">Buy gift vouchers</li>
               <li>Orders</li>
@@ -28,18 +34,32 @@
               <li>Privacy policy</li>
               <li>Credit</li>
             </ul>
+
+
+            <!-- Footer logo container -->
             <section class="logo-container">
               <div><img class="logo" src="../assets/logoatlas.png" alt="Logo-Image"></div>
             </section>
           </div>
-          <header>
+          <!-- End of footer links container -->
+
+
+          <!-- The footer's subscription container -->
+          <div class="subscription-container">
             <div class="newsletter">Become a MEMBER of our fashion community</div>
+            
+            
+            <!-- Container for subscription header and form -->
             <div class="signup-container">
+
+              <!-- V-for used to display validation error in DOM -->
               <div v-show="errors.length">
                 <ul>
                   <li class="error-message" v-for="error in errors" :key="error">{{ error }}</li>
                 </ul>
               </div>
+
+              <!-- Subs form -->
               <form @submit.prevent="addSubscriber">
                 <input v-model="newSubscriber" name="subscriber" type="email" placeholder="Enter your email address" />
               </form>
@@ -47,8 +67,11 @@
                 <button class="signup-btn" @click="addSubscriber">SIGNUP</button>
               </div>
             </div>
-          </header>
+          </div>
         </main>
+
+
+        <!-- Footer social media links -->
         <div class="sm-links">
           <a href="https://www.facebook.com/" target="_blank" alt="Facebook"><i class="fa-brands fa-facebook"></i></a>
           <a href="https://www.twitter.com/" target="_blank" alt="Twitter"><i class="fa-brands fa-twitter"></i></a>
@@ -59,14 +82,16 @@
           <a href="https://www.youtube.com/" target="_blank" alt="YouTube"><i class="fa-brands fa-youtube"></i></a>
         </div>
       </div>
-    </footer>
+    </div>
   </div>
+
 
   <!-- Subscription success message -->
   <Toasts />
 </template>
 
 <script>
+// Import toast component
 import Toasts from "/src/components/Toasts.vue";
 export default {
   components: { Toasts },
@@ -77,6 +102,7 @@ export default {
       errors: [],
     };
   },
+  // Storing subs emails to local storage
   mounted() {
     if (localStorage.getItem("subscriberList")) {
       try {
@@ -98,34 +124,54 @@ export default {
       }, 3000);
     },
 
+
     // Email Validation
     validEmail() {
       var re =
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(this.newSubscriber);
     },
+
+
     // Add subscriber data to local storage
     addSubscriber() {
-
+      // Form validation errors array - errors get pushed to this array depending on validation type
       this.errors = [];
+
+
+
       // ensure they actually typed something
       if (!this.newSubscriber) {
         this.errors.push("Please enter your email address");
         return;
       }
+      
+      // endure that the email address is a valid email address
       if (!this.validEmail(this.email)) {
         this.errors.push(
           "Please enter a valid email address (e.g. johndoe@mail.com)"
         );
         return;
       }
+
+
+      // Push data to local storage array
       this.subscriberList.push(this.newSubscriber);
+
+
+      // form reset
       this.newSubscriber = "";
+
+
+      // Calling this method to save to local storage
       this.saveSubscriber();
+
 
       // Subscription Toast message trigger
       this.subscribedSuccess()
     },
+
+    // Saves data to local storage
     saveSubscriber() {
       const parsed = JSON.stringify(this.subscriberList);
       localStorage.setItem("subscriberList", parsed);
@@ -135,7 +181,7 @@ export default {
 </script>
 
 <style scoped>
-
+/* Footer sale banner */
 .sale-banner {
   height: 75px;
   background: #242626;
@@ -148,19 +194,23 @@ export default {
   margin-top: 5vw;
 }
 
+
 /* Withing the footer container */
-footer {
+.footer-wrapper {
   background: #2f3131;
   color: #9d9d9d;
 }
 
+/* Inner container */
 .footer-inner {
   display: block;
   margin: 0 auto;
   background: #2f3131;
 }
 
-header {
+
+/* Container limiting max width to footer contents */
+.subscription-container {
   max-width: 1280px;
   display: flex;
   flex-direction: column;
@@ -170,6 +220,8 @@ header {
   align-items: center;
 }
 
+
+/* Form validation message styling */
 .error-message {
   list-style-type: none;
   color: red;
@@ -178,21 +230,29 @@ header {
   margin-bottom: 0;
 }
 
+
+/* Email input */
 input {
   padding: 0.25rem;
   min-width: 18rem;
   width: 100%;
 }
 
+
+/* Input Placeholder text */
 ::placeholder {
   font-size: calc(8px + 0.3rem);
 }
 
+
+/* Contains subs input form, including submit btn */
 .signup-container {
   display: flex;
   flex-direction: column;
 }
 
+
+/* Subs form submit btn */
 .signup-btn {
   border: none;
   margin-top: 7px;
@@ -202,12 +262,16 @@ input {
   float: right;
 }
 
+
+/* Subs header text */
 .newsletter {
   padding-bottom: 5px;
   color: #fff;
   font-weight: 600;
 }
 
+
+/* All footer contents except for footer's header and s.media links */
 main {
   display: block;
   margin: 0 auto;
@@ -240,6 +304,8 @@ main {
   padding: 1rem;
 }
 
+
+/* All footer emulated links / not including s.media links */
 li {
   margin: 0.25rem 0;
   font-size: 12px;
@@ -251,11 +317,15 @@ li:hover {
   color: #fff;
 }
 
+
+/* first link on each column */
 .link-heading {
   color: #fff;
   font-size: 13px;
 }
 
+
+/* Social media links */
 .sm-links {
   padding: 1rem;
   display: flex;
@@ -264,6 +334,8 @@ li:hover {
   background: #242626;
 }
 
+
+/* Overriding universal a tag styling */
 a {
   color: #fff;
   padding: 1rem;

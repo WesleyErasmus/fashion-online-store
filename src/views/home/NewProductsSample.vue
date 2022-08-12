@@ -1,19 +1,32 @@
 <template>
-  <!-- New Products -->
+  <!-- New Products Componente -->
+
+  <!-- New products container -->
   <div class="new-products-container row">
+
+    <!-- Component header -->
     <h1>New Collection</h1>
     <span>
+
+<!-- See all link that routes to the new products page -->
       <RouterLink :to="{ name: 'NewProducts' }" class="see-all">
         see all</RouterLink>
     </span>
+
+    <!-- New products card container -->
     <div class="card-group">
+     
+     <!-- V-for loop -->
       <div v-for="newin in products" :key="newin.id" class="card">
+     
+     <!-- Routing to the Product gallery page -->
         <router-link :to="{ name: 'Product', params: { id: newin.id } }">
           <div class="img-box">
             <img :src="'https://source.unsplash.com/random/?fashion/' + newin.id" alt="Just Dropped"
               class="card-img-top" />
           </div>
         </router-link>
+
         <div class="card-body"></div>
         <div class="card-footer">
           <small class="text-muted">#JustDropped</small>
@@ -43,6 +56,7 @@ export default {
 </script>
 
 <style scoped>
+
 /* Link colors [used to override universal links colors] */
 a,
 .green {
@@ -63,16 +77,20 @@ a,
   color: var(--primary-color) !important;
 }
 
-.card {
-  padding: var(--card-padding);
-}
 
+/* Card container */
 .new-products-container {
   padding: 5rem 0;
 }
 
-/* MEDIA QUERIES */
 
+/* Product cards */
+.card {
+  padding: var(--card-padding);
+}
+
+
+/* MEDIA QUERIES */
 @media screen and (min-width: 481px) and (max-width: 661px) {
 
   .card-group {
@@ -87,8 +105,8 @@ a,
     width: 45%;
 
   }
-
 }
+
 
 @media screen and (min-width: 0) and (max-width: 480px) {
   .card-group {

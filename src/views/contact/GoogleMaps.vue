@@ -2,6 +2,7 @@
     <!-- Contact page Google Maps location -->
     <div class="map-container">
         <div class="google-map">
+
             <!-- Google maps plugin -->
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13245.459500179782!2d18.41507526406142!3d-33.90600759267591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc6750cf9544a5%3A0x1dc3860578bb4780!2sV%26A%20Waterfront!5e0!3m2!1sen!2sza!4v1659857418654!5m2!1sen!2sza"
@@ -113,10 +114,6 @@ export default {
 }
 
 /* MEDIA QUERIES */
-@media screen and (min-width: 1601px) and (max-width: 1920px) {}
-
-@media screen and (min-width: 1281px) and (max-width: 1600px) {}
-
 @media screen and (min-width: 841px) and (max-width: 1280px) {
     .our-address h1 {
         font-size: calc(23px + 0.4rem);
@@ -143,8 +140,8 @@ export default {
     .our-address-company-name {
         font-size: calc(11px + 0.3rem);
     }
-
 }
+
 
 @media screen and (min-width: 662px) and (max-width: 840px) {
     .map-container {
@@ -213,8 +210,8 @@ export default {
         .our-address-company-name {
             font-size: calc(10px + 0.3rem);
         }
-
 }
+
 
 @media screen and (min-width: 0) and (max-width: 480px) {
     .map-container {

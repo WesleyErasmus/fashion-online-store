@@ -1,30 +1,33 @@
 <template>
+    <!-- These toast messages will appear on user actions success: Product added to cart / product removed from cart / Subscription form submission / Contact us form submission -->
 
     <!-- Add to cart success message -->
-    <div id="snackbar">Product Successfully Added To Cart!
+    <div id="snackbar">
+        <p>Product Successfully Added To Cart!</p>
         <router-link :to="{ name: 'Cart' }">
-            <div>View Your Cart</div>
+            <p>View Your Cart</p>
         </router-link>
     </div>
+
 
     <!-- Message form submission message -->
     <div id="snackbar2">Your Submission was Successful!
         <p>We'll send you a follow email from us shortly.😊</p>
     </div>
 
+
     <!-- Movie successfully added to watch list message -->
     <div id="snackbar3">Product Removed From Cart
     </div>
 
-    <!-- Email subscription form submission message -->
-    <div id="snackbar4">Welcome, Your Subscribed!
-    </div>
 
+    <!-- Email subscription form submission message -->
+    <div id="snackbar4">Welcome, New Subscriber!
+    </div>
 </template>
 
 
 <style scoped>
-
 /* Change link / router-link font color */
 a,
 .green {
@@ -45,7 +48,7 @@ p {
     font-weight: bold;
 }
 
-
+/* Toast message styling */
 #snackbar,
 #snackbar2,
 #snackbar3,
@@ -68,6 +71,8 @@ p {
     box-shadow: var(--card-shadows);
 }
 
+
+/* Toasts animation styling below */
 #snackbar.show,
 #snackbar2.show,
 #snackbar3.show,

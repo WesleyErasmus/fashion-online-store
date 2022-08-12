@@ -1,18 +1,34 @@
 <template>
+  <!-- ================================================================================== -->
+
+  <!-- This modal is used to display Zoomed product images in the product image look-book -->
+
+  <!-- ================================================================================== -->
+
+
+  <!-- Grey background on modal display -->
   <div class="backdrop" @click.self="closeModal">
-    <div class="product-modal">
-      <!-- Message that will display if slot is not passed in -->
+    <!-- Close modal if click on backdrop click event -->
+
+    <!-- Modal container -->
+      <div class="product-modal">
+
+    <!-- Modal close X btn -->
       <div class="actions">
         <slot name="links"></slot>
       </div>
+
+      <!-- Message that will display if slot is not passed in -->
       <slot>Content not found</slot>
     </div>
   </div>
 </template>
 
+
 <script>
 export default {
   methods: {
+    // Close modal function
     closeModal() {
       this.$emit("close");
     },
@@ -21,6 +37,7 @@ export default {
 </script>
 
 <style>
+/* Modal styling */
 .product-modal {
   display: block !important;
   width: 50vw;
@@ -34,6 +51,9 @@ export default {
   margin-right: -50%;
   transform: translate(-50%, -50%);
 }
+
+
+/* Modal backdrop styling */
 .backdrop {
   z-index: 9999;
   top: 0;
@@ -43,8 +63,9 @@ export default {
   height: 100%;
 }
 
+
+/* Modal close btn styling */
 .product-modal .actions {
   float: right;
-  
 }
 </style>

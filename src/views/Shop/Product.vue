@@ -1,8 +1,13 @@
 <template>
   <div id="main" class="product-page">
     <div class="product">
-      <!-- Product template -->
+
+      <!-- Product gallery page // Products are redirected here once the user clicks on the product -->
+
+      <!-- v-if to display product content / also linked to a v-else for page loading spinner -->
       <div v-if="product">
+
+        <!-- Page heading -->
         <h1 class="page-heading">Product Details</h1>
 
         <!-- View cart link -->
@@ -11,22 +16,31 @@
           <div class="view-cart">View Cart</div>
         </RouterLink>
 
+        <!-- Product image gallery inages container -->
         <div class="product-container">
           <div class="product-image-container">
+
+            <!-- Image 1 -->
             <div class="img-box">
               <img class="product-img" :src="product.images + 0" alt="Product Image 1" @click="toggleModal1" />
             </div>
 
+            <!-- Image 2 -->
             <div class="img-box">
               <img class="product-img" :src="product.images + 1" alt="Product Image 2" @click="toggleModal2" />
             </div>
 
-
+            <!-- Image 2 -->
             <div class="img-box">
               <img class="product-img" :src="product.images + 2" alt="Product Image 3" @click="toggleModal3" />
             </div>
 
 
+
+            <!-- Modals that pop up with enlarged product images / images are linked by using the same index number in the product.images object in API -->
+
+            <!-- Teleporting outside of page container - see #modals div in the index.html file -->
+            <!-- Image modal 1 -->
             <teleport to="#modals" v-if="showModal1">
               <Modal @close="toggleModal1">
                 <img class="product-img-zoomed" :src="product.images + 0" alt="Product Image 1" />
@@ -36,6 +50,8 @@
                 </template>
               </Modal>
             </teleport>
+
+            <!-- Image modal 2 -->
             <teleport to="#modals" v-if="showModal2">
               <Modal @close="toggleModal2">
                 <img class="product-img-zoomed" :src="product.images + 1" alt="Product Image 2" />
@@ -45,6 +61,8 @@
                 </template>
               </Modal>
             </teleport>
+
+            <!-- Image modal 3 -->
             <teleport to="#modals" v-if="showModal3">
               <Modal @close="toggleModal3">
                 <img class="product-img-zoomed" :src="product.images + 2" alt="Product Image 3" />
@@ -56,8 +74,10 @@
               </Modal>
             </teleport>
           </div>
-
           <!-- End of product images container -->
+
+
+          <!-- Product details container -->
           <div class="product-details">
             <span class="product-id">Product id: {{ product.id }}</span>
 
@@ -73,6 +93,7 @@
 
             <div class="product-description">{{ product.description }}</div>
 
+
             <!-- Add to cart button -->
             <button class="add-to-cart-btn" @click="addToCart(product)">
               <span class="material-symbols-outlined shopping-cart-icon">
@@ -83,9 +104,9 @@
           </div>
           <!-- End of product details container -->
         </div>
-
-
       </div>
+
+      <!-- V-else to display spinner on page load -->
       <div v-else>
         <Spinner />
       </div>
@@ -98,12 +119,14 @@
 </template>
 
 <script>
+// component imports
 import axios from "axios";
 import Spinner from "/src/components/Spinner.vue";
 import Modal from "/src/components/Modal.vue";
 import Toasts from "/src/components/Toasts.vue";
 export default {
   components: { Spinner, Modal, Toasts },
+  // Id. props used for dynamic routing / props enabled on product component. See router/index.js
   props: ["id"],
   data() {
     return {
@@ -121,10 +144,14 @@ export default {
       var x = document.getElementById("snackbar");
       x.className = "show";
       setTimeout(function () {
+         // Refreshes page after item is removed from cart
+        window.location.reload();
         x.className = x.className.replace("show", "");
-      }, 3000);
+      }, 1000);
     },
-    // Product Zoom Modal
+
+
+    // Product Zoom Modals
     toggleModal1() {
       this.showModal1 = !this.showModal1;
     },
@@ -134,33 +161,27 @@ export default {
     toggleModal3() {
       this.showModal3 = !this.showModal3;
     },
+
+
     // Add products to shopping cart function
     addToCart(product) {
-      // Ensure that the watch-list array is not empty
+      // Ensure that the product array is not empty
       if (!this.shoppingCart) {
         return;
       }
 
-      // Adding products to the front of the watchList
+      // Adding products to the front of the cart
       if (this.shoppingCart.unshift(product)) {
       }
 
       // Save to local storage function
       this.saveToLocalStorage();
-
-      // Add to cart toast message function trigger
-      this.addToCartSuccessToast()
-
-      console.log(this.shoppingCart);
     },
 
-    // Save products to watch-list function
+    // Save products to cart function
     saveToLocalStorage() {
       const parsed = JSON.stringify(this.shoppingCart);
       localStorage.setItem("shoppingCart", parsed);
-
-      // Refreshes page after item is removed from cart
-      window.location.reload();
     },
   },
   mounted() {
@@ -186,10 +207,13 @@ export default {
 
 <style scoped>
 
+/* Page container */
 .product-page {
   box-shadow: var(--card-shadows);
 }
 
+
+/* View cart button below page header */
 .view-cart {
   display: inline-block;
   color: var(--primary-color);
@@ -201,17 +225,21 @@ export default {
   color: var(--primary-grey);
 }
 
+
+/* Product details wrapper */
 .product {
   margin-top: 2vw;
   padding: 2rem;
 }
 
+/* Flex container for images layout */
 .product-container {
   display: flex;
   flex-direction: row;
   padding: 2vw 0;
 }
 
+/* Contains images only */
 .product-image-container {
   position: relative;
   width: 590px;
@@ -222,6 +250,7 @@ export default {
   flex-direction: column;
 }
 
+/* Individual image container for hover effect */
 .img-box {
   display: flex;
   justify-content: center;
@@ -230,6 +259,8 @@ export default {
   margin: 0.2rem;
 }
 
+
+/* Product images */
 .product-img {
   width: 270px;
   -webkit-transition: 0.3s ease-in-out;
@@ -242,6 +273,8 @@ export default {
   cursor: zoom-in;
 }
 
+
+/* Modal product images */
 .product-img-zoomed {
   width: 100%;
   -webkit-transition: 0.3s ease-in-out;
@@ -253,21 +286,27 @@ export default {
   position: relative;
 }
 
+/* Close modal button / modal can also be closed if you click anywhere else on the screen */
 .close-modal-button {
   padding: 0;
   margin: 0;
   background: transparent;
 }
 
+/* Product details container */
 .product-details {
   width: 450px;
   margin-left: 2rem;
 }
 
+
+/* Product title container */
 .product-title {
   padding: 0 0.5rem;
 }
 
+
+/* Product price text styling */
 .product-price {
   font-size: calc(14px + 1rem);
   font-weight: bold;
@@ -275,16 +314,21 @@ export default {
   color: var(--primary-color);
 }
 
+
+/* Product id font sizing */
 .product-id {
   padding: 0 0.5rem;
   font-size: calc(8px + 0.2rem);
 }
 
+
+/* Compartment text container */
 .product-department {
   color: grey;
   padding: 0 0.5rem;
 }
 
+/* Description and title container */
 .product-description-title {
   padding: 0 0.5rem;
   margin-top: 3rem;
@@ -293,12 +337,14 @@ export default {
   padding-bottom: 0.2rem;
 }
 
+/* Product description font styling */
 .product-description {
   padding: 0 0.5rem;
   color: grey;
   font-size: calc(8px + 0.35rem);
 }
 
+/* Add to cart button */
 .add-to-cart-btn {
   margin-top: 3rem;
   width: 100%;
@@ -310,17 +356,16 @@ export default {
   box-shadow: var(--card-shadows);
 }
 
+
+/* Google fonts shopping cart icon */
 .shopping-cart-icon {
   position: relative;
   bottom: -4px;
   margin-right: 13px;
+  font-size: 28px;
 }
 
 .add-to-cart-btn:hover {
   opacity: 0.8;
-}
-
-.material-symbols-outlined {
-  font-size: 28px;
 }
 </style>

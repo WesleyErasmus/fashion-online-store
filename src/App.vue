@@ -3,21 +3,19 @@ import { RouterLink, RouterView } from "vue-router";
 </script>
 
 <template>
+
+<!-- Sticky navbar -->
   <header ref="top" id="header" class="sticky-top">
 
     <!-- Store logo container -->
     <div class="logo-container">
-
       <!-- Store logo -->
       <img class="store-logo-words" src="../src/assets/logofull.png" alt="Logo Image">
-
     </div>
 
     <!-- Router page links -->
     <div class="wrapper">
       <nav>
-        <!-- Store logo -->
-        <!-- <img class="store-logo-words" src="../src/assets/logowords1.png" alt=""> -->
         <RouterLink :to="{ name: 'Home' }">Home</RouterLink>
         <RouterLink :to="{ name: 'Shop' }">Shop</RouterLink>
         <RouterLink :to="{ name: 'Cart' }">Cart</RouterLink>
@@ -26,8 +24,6 @@ import { RouterLink, RouterView } from "vue-router";
         <RouterLink :to="{ name: 'About' }">About</RouterLink>
         <RouterLink :to="{ name: 'Contact' }">Contact</RouterLink>
 
-
-
         <!-- Shopping Cart Icon in header -->
         <div id="navbar-cart" class="cart-icon-link-container">
 
@@ -35,15 +31,15 @@ import { RouterLink, RouterView } from "vue-router";
           <RouterLink class="shopping-cart-icon" :to="{ name: 'Cart' }">CART<span class="material-symbols-outlined">
               add_shopping_cart
             </span>
+            <!-- Shopping cart count display -->
             <div class="cart-count-number">{{ this.shoppingCart.length }}</div>
           </RouterLink>
           <!-- Cart length count -->
         </div>
-
       </nav>
     </div>
 
-    <!-- Redirect buttons -->
+    <!-- Redirect buttons  #youreasynav-->
     <div class="redirect-btn-container">
       <nav>
         <span>#youreasynav >></span>
@@ -55,14 +51,18 @@ import { RouterLink, RouterView } from "vue-router";
   </header>
 
   <RouterView />
+
+  <!-- App Footer component -->
   <Footer />
 </template>
 
 <script>
+// Components import
 import Footer from "../src/components/Footer.vue";
 import Product from "../src/views/shop/Product.vue";
 export default {
   components: { Footer, Product },
+  // props to bring in cart array length count
   props: ["shoppingCart"],
   data() {
     return {
@@ -71,9 +71,11 @@ export default {
     }
   },
   methods: {
+    // Back redirect button / using router history feature
     back() {
       this.$router.go(-1);
     },
+    // Forward redirect button / using router history feature
     forward() {
       this.$router.go(1);
     },
@@ -84,12 +86,13 @@ export default {
   },
 
   computed: {
+    // To display Shopping cart length
     cartLength() {
       return this.shoppingCart.length;
     },
   },
   mounted() {
-    // Display local storage movies in the DOM
+    // To display Shopping cart length
     if (localStorage.getItem("shoppingCart")) {
       try {
         this.shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
@@ -104,18 +107,7 @@ export default {
 <style scoped>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+/* App header styling */
 header {
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -126,6 +118,8 @@ header {
   background: #fff;
 }
 
+
+/* App logo container */
 .logo-container {
   position: relative;
   display: block;
@@ -133,6 +127,7 @@ header {
   max-width: 1280px;
 }
 
+/* Logo */
 .store-logo-words {
   position: absolute;
   top: -50px;
@@ -141,6 +136,8 @@ header {
   margin-top: 0;
   padding-top: 1.5rem;
 }
+
+/* Shopping cart icon and cart item count container */
 .cart-icon-link-container {
   display: block;
   margin: 0 auto;
@@ -149,17 +146,20 @@ header {
   margin-top: 5px;
 }
 
+
+/* Shopping cart icon */
 .shopping-cart-icon {
   position: absolute;
   right: 2vw;
   top: -1vw;
-  color: rgb(158, 158, 158);
+  color: rgb(78, 78, 78);
   /* color: #000; */
 }
 
 .shopping-cart-icon:hover {
   color: var(--primary-color);
 }
+
 
 /* Cart number displayed on dom */
 .cart-count-number {
@@ -176,6 +176,7 @@ header {
   font-size: 12px;
 }
 
+/* Shopping cart icon font styling */
 .shopping-cart-icon .material-symbols-outlined {
   font-size: calc(25px + 0.3rem);
   font-weight: bold;
@@ -183,11 +184,13 @@ header {
   color: #000;
 
 }
-
+/* Back to top of page button */
 .back-to-top-btn {
-  color: rgb(158, 158, 158);
+color: rgb(78, 78, 78);
 }
 
+
+/* Nav bar links styling */
 nav a.router-link-exact-active {
   color: #000;
 }
@@ -206,6 +209,7 @@ nav a:first-of-type {
   border: 0;
 }
 
+/* Redirect buttons container */
 .redirect-btn-container {
   display: inline-block;
   margin-top: 1rem;
@@ -240,9 +244,9 @@ nav a:first-of-type {
 
   .redirect-btn-container {
     display: none;
-  }
-  
+  }  
 }
+
 
 @media screen and (min-width: 0) and (max-width: 480px) {
 
