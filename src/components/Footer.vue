@@ -35,14 +35,14 @@
           <header>
             <div class="newsletter">Become a MEMBER of our fashion community</div>
             <div class="signup-container">
-              <!-- <div> -->
-                <input
-                  v-model="newSubscriber"
-                  name="subscriber"
-                  type="email"
-                  placeholder="Enter your email address"
-                />
-              <!-- </div> -->
+              <div v-show="errors.length">
+              <ul>
+                <li class="error-message" v-for="error in errors" :key="error">{{ error }}</li>
+              </ul>
+              </div>
+              <form @submit.prevent="addSubscriber">
+                <input v-model="newSubscriber" name="subscriber" type="email" placeholder="Enter your email address" />
+              </form>
               <div class="blogs">
                 <button class="signup-btn" @click="addSubscriber">SIGNUP</button>
               </div>
@@ -68,6 +68,7 @@ export default {
     return {
       subscriberList: [],
       newSubscriber: null,
+      errors: [],
     };
   },
   mounted() {
@@ -82,12 +83,25 @@ export default {
     }
   },
   methods: {
+    validEmail() {
+      var re =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(this.newSubscriber);
+    },
     addSubscriber() {
+
+      this.errors = [];
       // ensure they actually typed something
       if (!this.newSubscriber) {
+        this.errors.push("Please enter your email address");
         return;
       }
-
+      if (!this.validEmail(this.email)) {
+        this.errors.push(
+          "Please enter a valid email address (e.g. johndoe@mail.com)"
+        );
+        return;
+      }
       this.subscriberList.push(this.newSubscriber);
       this.newSubscriber = "";
       this.saveSubscriber();
@@ -101,6 +115,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 .sale-banner {
   height: 75px;
   background: #242626;
@@ -112,15 +128,19 @@ export default {
   align-items: center;
   margin-top: 5vw;
 }
+
+/* Withing the footer container */
 footer {
   background: #2f3131;
   color: #9d9d9d;
 }
+
 .footer-inner {
   display: block;
   margin: 0 auto;
   background: #2f3131;
 }
+
 header {
   max-width: 1280px;
   display: flex;
@@ -131,32 +151,45 @@ header {
   align-items: center;
 }
 
+.error-message {
+  list-style-type: none;
+  color: red;
+  font-size: calc(10px + 0.35rem);
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
 input {
   padding: 0.25rem;
-  width: 18rem;
+  min-width: 18rem;
+  width: 100%;
 }
 
 ::placeholder {
   font-size: calc(8px + 0.3rem);
 }
+
 .signup-container {
   display: flex;
   flex-direction: column;
 }
+
 .signup-btn {
-border: none;
-margin-top: 7px;
-padding: 0.5rem 0.75rem;
-border-radius: 2px;
-font-size: calc(8px + 0.3rem);
-float: right;
+  border: none;
+  margin-top: 7px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 2px;
+  font-size: calc(8px + 0.3rem);
+  float: right;
 }
+
 .newsletter {
   padding-bottom: 5px;
   /* color: #c1c1c1; */
   color: #fff;
   font-weight: 600;
 }
+
 main {
   display: block;
   margin: 0 auto;
@@ -164,21 +197,25 @@ main {
   background: #2f3131;
   padding: 0 0 2rem 0;
 }
+
 .logo-discount-container {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   padding: 1rem;
 }
+
 .logo {
   color: var(--primary-color);
 }
+
 .footer-links {
   padding: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
+
 .footer-links-container {
   list-style-type: none;
   padding: 1rem;
@@ -188,6 +225,7 @@ li {
   margin: 0.25rem 0;
   font-size: 12px;
 }
+
 li:hover {
   opacity: 0.8;
   cursor: pointer;
@@ -206,12 +244,14 @@ li:hover {
   justify-content: center;
   background: #242626;
 }
+
 a {
   color: #fff;
   padding: 1rem;
-   -webkit-transition: 0.3s ease-in-out;
+  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
+
 a:hover {
   transform: scale(1.5);
   background: none;
