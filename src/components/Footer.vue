@@ -28,8 +28,8 @@
               <li>Privacy policy</li>
               <li>Credit</li>
             </ul>
-            <section class="logo-discount-container">
-              <div class="logo">WEBSITE LOGO</div>
+            <section class="logo-container">
+              <div><img class="logo" src="../assets/logoatlas.png" alt="Logo-Image"></div>
             </section>
           </div>
           <header>
@@ -50,12 +50,13 @@
           </header>
         </main>
         <div class="sm-links">
-          <a href=""><i class="fa-brands fa-facebook"></i></a>
-          <a href=""><i class="fa-brands fa-twitter"></i></a>
-          <a href=""><i class="fa-brands fa-instagram"></i></a>
-          <a href=""><i class="fa-brands fa-linkedin"></i></a>
-          <a href=""><i class="fa-brands fa-tiktok"></i></a>
-          <a href=""><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.facebook.com/" target="_blank" alt="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.twitter.com/" target="_blank" alt="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="https://www.instagram.com/" target="_blank" alt="Instagram"><i
+              class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/" target="_blank" alt="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://www.tiktok.com/" target="_blank" alt="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://www.youtube.com/" target="_blank" alt="YouTube"><i class="fa-brands fa-youtube"></i></a>
         </div>
       </div>
     </footer>
@@ -135,7 +136,6 @@ export default {
 
 <style scoped>
 
-
 .sale-banner {
   height: 75px;
   background: #242626;
@@ -204,7 +204,6 @@ input {
 
 .newsletter {
   padding-bottom: 5px;
-  /* color: #c1c1c1; */
   color: #fff;
   font-weight: 600;
 }
@@ -217,15 +216,16 @@ main {
   padding: 0 0 2rem 0;
 }
 
-.logo-discount-container {
+.logo-container {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding: 1rem;
 }
 
 .logo {
-  color: var(--primary-color);
+  width: calc(100px + 10vw);
+  border-radius: 2px;
+  padding: 0.5rem 1.5rem;
 }
 
 .footer-links {

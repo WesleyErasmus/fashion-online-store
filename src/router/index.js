@@ -7,6 +7,7 @@ import About from "../views/About.vue";
 import Contact from "../views/contact/Contact.vue";
 import FeaturedProducts from "../views/FeaturedProducts.vue";
 import NewProducts from "../views/NewProducts.vue";
+import NotFound from "../views/NotFound.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -51,6 +52,12 @@ const router = createRouter({
       path: "/newproducts",
       name: "NewProducts",
       component: NewProducts,
+    },
+    // Sends a 404 message to pages that can't be found
+    {
+      path: "/:catchAll(.*)",
+      name: "NotFound",
+      component: NotFound,
     },
   ],
 });

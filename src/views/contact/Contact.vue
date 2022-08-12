@@ -9,12 +9,20 @@
         <!-- Social media links -->
       </div>
       <div class="sm-links">
-        <a class="sm-icon-item" href=""><i class="fa-brands fa-facebook"></i></a>
-        <a class="sm-icon-item" href=""><i class="fa-brands fa-twitter"></i></a>
-        <a class="sm-icon-item" href=""><i class="fa-brands fa-instagram"></i></a>
-        <a class="sm-icon-item" href=""><i class="fa-brands fa-linkedin"></i></a>
-        <a class="sm-icon-item" href=""><i class="fa-brands fa-tiktok"></i></a>
-        <a class="sm-icon-item" href=""><i class="fa-brands fa-youtube"></i></a>
+        <div class="sm-links">
+          <a class="sm-icon-item" href="https://www.facebook.com/" target="_blank" alt="Facebook"><i
+              class="fa-brands fa-facebook"></i></a>
+          <a class="sm-icon-item" href="https://www.twitter.com/" target="_blank" alt="Twitter"><i
+              class="fa-brands fa-twitter"></i></a>
+          <a class="sm-icon-item" href="https://www.instagram.com/" target="_blank" alt="Instagram"><i
+              class="fa-brands fa-instagram"></i></a>
+          <a class="sm-icon-item" href="https://www.linkedin.com/" target="_blank" alt="LinkedIn"><i
+              class="fa-brands fa-linkedin"></i></a>
+          <a class="sm-icon-item" href="https://www.tiktok.com/" target="_blank" alt="TikTok"><i
+              class="fa-brands fa-tiktok"></i></a>
+          <a class="sm-icon-item" href="https://www.youtube.com/" target="_blank" alt="YouTube"><i
+              class="fa-brands fa-youtube"></i></a>
+        </div>
       </div>
     </header>
 

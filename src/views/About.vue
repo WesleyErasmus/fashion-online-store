@@ -4,6 +4,7 @@
     <div class="about-company">
       <div class="about-company-heading">
         <h1>Who We Are</h1>
+        <!-- <span><img class="logo-image" src="../assets/logopicture.png" alt="Logo Picture"></span> -->
       </div>
       <!-- Company profile text container -->
       <div class="company-bio-container">
@@ -49,7 +50,9 @@
 
     <!-- Endorsements Wrapper -->
     <div class="endorsements-wrapper">
-      <h1 class="endorsement-container-heading">Endorsements</h1>
+      <div class="logo-container">
+        <img class="logo-image" src="../assets/logowords.png" alt="Logo-Words">
+      </div>
 
       <!-- Google fonts icon -->
       <span class="material-symbols-outlined"> thumb_up_off </span>
@@ -103,6 +106,11 @@ export default {
 </script>
 
 <style scoped>
+
+
+
+
+
 /* About company profile container */
 .about-company {
   padding: 5rem 0;
@@ -116,9 +124,13 @@ export default {
   align-content: center;
   align-items: center;
   justify-content: center;
-  background: var(--primary-color);
+  background: #000;
   padding: 2vw;
-  color: rgb(236, 236, 236);
+  color: #fff;
+}
+
+.material-symbols-outlined {
+  color: var(--primary-color);
 }
 
 /* Profile text container */
@@ -170,9 +182,9 @@ export default {
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 
-.endorsement-container-heading {
-  margin-bottom: 2vw;
-  border-bottom: 1px solid #fff;
+/* Logo at customer endorsements */
+.logo-container {
+  margin-bottom: 1rem;
 }
 
 /* Google fonts icon for endorsements header */
@@ -200,10 +212,6 @@ export default {
 
 
 /* MEDIA QUERIES */
-@media screen and (min-width: 1601px) and (max-width: 1920px) {}
-
-@media screen and (min-width: 1281px) and (max-width: 1600px) {}
-
 @media screen and (min-width: 841px) and (max-width: 1280px) {
   .company-bio-container {
     font-size: calc(11px + 0.35rem);

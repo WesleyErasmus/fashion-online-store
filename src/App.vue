@@ -4,9 +4,20 @@ import { RouterLink, RouterView } from "vue-router";
 
 <template>
   <header ref="top" id="header" class="sticky-top">
+
+    <!-- Store logo container -->
+    <div class="logo-container">
+
+      <!-- Store logo -->
+      <img class="store-logo-words" src="../src/assets/logofull.png" alt="Logo Image">
+
+    </div>
+
     <!-- Router page links -->
     <div class="wrapper">
       <nav>
+        <!-- Store logo -->
+        <!-- <img class="store-logo-words" src="../src/assets/logowords1.png" alt=""> -->
         <RouterLink :to="{ name: 'Home' }">Home</RouterLink>
         <RouterLink :to="{ name: 'Shop' }">Shop</RouterLink>
         <RouterLink :to="{ name: 'Cart' }">Cart</RouterLink>
@@ -15,8 +26,12 @@ import { RouterLink, RouterView } from "vue-router";
         <RouterLink :to="{ name: 'About' }">About</RouterLink>
         <RouterLink :to="{ name: 'Contact' }">Contact</RouterLink>
 
+
+
         <!-- Shopping Cart Icon in header -->
         <div id="navbar-cart" class="cart-icon-link-container">
+
+          <!-- Shopping cart icon & link to cart -->
           <RouterLink class="shopping-cart-icon" :to="{ name: 'Cart' }">CART<span class="material-symbols-outlined">
               add_shopping_cart
             </span>
@@ -87,15 +102,45 @@ export default {
 </script>
 
 <style scoped>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 header {
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
+  padding-bottom: 2.8rem;
   text-align: center;
   background: #fff;
 }
 
+.logo-container {
+  position: relative;
+  display: block;
+    margin: 0 auto;
+  max-width: 1280px;
+}
+
+.store-logo-words {
+  position: absolute;
+  top: -50px;
+  left: 30px;
+  width: calc(50px + 3.5vw);
+  margin-top: 0;
+  padding-top: 1.5rem;
+}
 .cart-icon-link-container {
   display: block;
   margin: 0 auto;
@@ -108,7 +153,12 @@ header {
   position: absolute;
   right: 2vw;
   top: -1vw;
+  color: rgb(158, 158, 158);
+  /* color: #000; */
+}
 
+.shopping-cart-icon:hover {
+  color: var(--primary-color);
 }
 
 /* Cart number displayed on dom */
@@ -127,7 +177,7 @@ header {
 }
 
 .shopping-cart-icon .material-symbols-outlined {
-  font-size: calc(30px + 0.6rem);
+  font-size: calc(25px + 0.3rem);
   font-weight: bold;
   color: var(--primary-grey);
   color: #000;
@@ -162,5 +212,63 @@ nav a:first-of-type {
   padding-bottom: 0.5rem;
   border-bottom: 1px solid #ddd;
   cursor: pointer;
+}
+
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 481px) and (max-width: 840px) {
+#header {
+    padding-top: 1rem;
+    padding-bottom: 0;
+  }
+
+  #app {
+    padding-top: 0rem;
+  }
+
+  .store-logo-words {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    padding-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .cart-icon-link-container {
+    display: none;
+  }
+
+  .redirect-btn-container {
+    display: none;
+  }
+  
+}
+
+@media screen and (min-width: 0) and (max-width: 480px) {
+
+#header {
+    padding-top: 1rem;
+    padding-bottom: 0;
+  }
+
+  #app {
+    padding-top: 0rem;
+  }
+
+  .store-logo-words {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    padding-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .cart-icon-link-container {
+    display: none;
+  }
+
+  .redirect-btn-container {
+    display: none;
+  }
 }
 </style>
