@@ -20,11 +20,8 @@
     <!-- Home page Image Banner -->
     <RouterLink :to="{ name: 'FeaturedProducts' }">
       <div class="img-banner-container">
-        <img
-          alt="Image Banner"
-          class="img-banner"
-          src="https://www.kappanordic.com/pub/media/wysiwyg/slider/topbanner_2222x831_Kappa_EN.jpg"
-        />
+        <img alt="Image Banner" class="img-banner"
+          src="https://www.kappanordic.com/pub/media/wysiwyg/slider/topbanner_2222x831_Kappa_EN.jpg" />
       </div>
     </RouterLink>
 
@@ -36,7 +33,7 @@
 
     <!-- New Products -->
     <NewProductsSample id="NewProductsSample" />
-   
+
   </div>
   <!-- End of Home Page Wrapper -->
 </template>
@@ -73,18 +70,21 @@ a,
   color: #000 !important;
   transition: 0.4s;
 }
+
 /* Link Hover color */
 @media (hover: hover) {
   a:hover {
     color: #000;
   }
 }
+
 .home-page {
   padding: 1rem;
   max-width: 1280px;
   display: block;
   margin: 0 auto;
 }
+
 /* Top banner links container */
 .page-links {
   height: 75px;
@@ -96,16 +96,19 @@ a,
   align-content: center;
   align-items: center;
 }
+
 .new-products-link,
 .feature-products-link {
   color: #bbb;
-  font-size: calc(16px + 0.4rem);
+  font-size: calc(16px + 0.6rem);
 }
+
 .new-products-link:hover,
 .feature-products-link:hover {
   color: #fff;
   cursor: pointer;
 }
+
 /* End of top banner links container */
 
 /* Home page top banner img */
@@ -113,10 +116,43 @@ a,
   width: 100%;
 }
 
-#TrendingSample { margin-top: 2rem; }
+#TrendingSample {
+  margin-top: 2rem;
+}
 
-#HomePageBlogs { margin-top: 2rem; }
+#HomePageBlogs {
+  margin-top: 2rem;
+}
 
+#NewProductsSample {
+  margin-top: 2rem;
+}
 
-#NewProductsSample { margin-top: 2rem;}
+/* MEDIA QUERIES */
+@media screen and (min-width: 662px) and (max-width: 840px) {
+
+  .new-products-link,
+  .feature-products-link {
+    font-size: calc(14px + 0.5rem);
+  }
+
+}
+
+@media screen and (min-width: 481px) and (max-width: 661px) {
+
+  .new-products-link,
+  .feature-products-link {
+    font-size: calc(11px + 0.4rem);
+  }
+
+}
+
+@media screen and (min-width: 0) and (max-width: 480px) {
+
+  .new-products-link,
+  .feature-products-link {
+    font-size: calc(10px + 0.3rem);
+  }
+
+}
 </style>

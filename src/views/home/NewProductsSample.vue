@@ -1,36 +1,32 @@
 <template>
-   <!-- New Products -->
-    <div class="new-products-container row">
-      <h1>New Collection</h1>
-      <span
-        ><RouterLink :to="{ name: 'NewProducts' }" class="see-all">
-          see all</RouterLink
-        >
-      </span>
-      <div class="card-group">
-        <div v-for="newin in products" :key="newin.id" class="card">
-          <router-link :to="{ name: 'Product', params: { id: newin.id } }">
-            <div class="img-box">
-            <img
-              :src="'https://source.unsplash.com/random/?fashion/' + newin.id"
-              alt="Just Dropped"
-              class="card-img-top"
-            />
-            </div>
-          </router-link>
-          <div class="card-body"></div>
-          <div class="card-footer">
-            <small class="text-muted">#JustDropped</small>
+  <!-- New Products -->
+  <div class="new-products-container row">
+    <h1>New Collection</h1>
+    <span>
+      <RouterLink :to="{ name: 'NewProducts' }" class="see-all">
+        see all</RouterLink>
+    </span>
+    <div class="card-group">
+      <div v-for="newin in products" :key="newin.id" class="card">
+        <router-link :to="{ name: 'Product', params: { id: newin.id } }">
+          <div class="img-box">
+            <img :src="'https://source.unsplash.com/random/?fashion/' + newin.id" alt="Just Dropped"
+              class="card-img-top" />
           </div>
+        </router-link>
+        <div class="card-body"></div>
+        <div class="card-footer">
+          <small class="text-muted">#JustDropped</small>
         </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
 import axios from "axios";
 export default {
-     data() {
+  data() {
     return {
       products: [],
     };
@@ -54,21 +50,58 @@ a,
   color: #000 !important;
   transition: 0.4s;
 }
+
 /* Link Hover color */
 @media (hover: hover) {
   a:hover {
     color: #000;
   }
 }
+
 /* Feature and new products cards */
 .see-all {
   color: var(--primary-color) !important;
 }
+
 .card {
   padding: var(--card-padding);
 }
+
 .new-products-container {
   padding: 5rem 0;
 }
 
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 481px) and (max-width: 661px) {
+
+  .card-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+  }
+
+  .card {
+    width: 45%;
+
+  }
+
+}
+
+@media screen and (min-width: 0) and (max-width: 480px) {
+  .card-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+  }
+
+  .card {
+    width: 40%;
+
+  }
+}
 </style>

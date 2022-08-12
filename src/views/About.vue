@@ -36,7 +36,7 @@
           <p class="card-text">
             {{ member.job_title }}
           </p>
-          <p class="card-text">
+          <p class="card-description">
             <small class="text-muted">{{ member.bio }}</small>
           </p>
         </div>
@@ -103,7 +103,6 @@ export default {
 </script>
 
 <style scoped>
-
 /* About company profile container */
 .about-company {
   padding: 5rem 0;
@@ -185,20 +184,120 @@ export default {
   margin-right: 13px;
 }
 
-/* Font size for endorsement container */
-.customer-endorsements-container {
-  font-size: calc(14px + 0.3rem);
-}
-
+/* Endorsement comment containers */
 .endorsement-comment {
   border-radius: 7px;
   padding: var(--card-padding);
-  margin: var(--card-padding);
+  font-size: calc(13px + 0.3rem);
 }
 
 .endorser-name {
   color: var(--primary-color);
   font-weight: bold;
   font-size: calc(12px + 0.3rem);
+}
+
+
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 1601px) and (max-width: 1920px) {}
+
+@media screen and (min-width: 1281px) and (max-width: 1600px) {}
+
+@media screen and (min-width: 841px) and (max-width: 1280px) {
+  .company-bio-container {
+    font-size: calc(11px + 0.35rem);
+
+  }
+
+  .endorsement-comment {
+    font-size: calc(11px + 0.3rem);
+  }
+
+  .endorser-name {
+    font-size: calc(12px + 0.3rem);
+  }
+}
+
+@media screen and (min-width: 662px) and (max-width: 840px) {
+  .company-bio-container {
+    font-size: calc(10px + 0.3rem);
+
+  }
+
+  .card-text {
+    font-size: calc(9px + 0.3rem);
+  }
+
+  .endorsement-comment {
+
+    border-radius: 0;
+    font-size: calc(9px + 0.3rem);
+    border-bottom: 1px solid rgb(187, 187, 187);
+  }
+
+  .endorser-name {
+    font-size: calc(10px + 0.3rem);
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 661px) {
+  .company-bio-container {
+    font-size: calc(10px + 0.3rem);
+
+  }
+
+  .card-title {
+    min-height: 0;
+  }
+
+  .card-text {
+    font-size: calc(9px + 0.3rem);
+  }
+
+  .card-description {
+    display: none;
+  }
+
+  .endorsement-comment {
+    border-radius: 0;
+    font-size: calc(9px + 0.3rem);
+    border-bottom: 1px solid rgb(187, 187, 187);
+    margin: var(--card-padding);
+  }
+
+  .endorser-name {
+    font-size: calc(10px + 0.3rem);
+  }
+}
+
+@media screen and (min-width: 0) and (max-width: 480px) {
+  .company-bio-container {
+    font-size: calc(10px + 0.3rem);
+
+  }
+
+  .card-title {
+    min-height: 0;
+  }
+
+  .card-text {
+    font-size: calc(9px + 0.3rem);
+  }
+
+  .card-description {
+    display: none;
+  }
+
+  .endorsement-comment {
+    border-radius: 0;
+    font-size: calc(9px + 0.3rem);
+    border-bottom: 1px solid rgb(187, 187, 187);
+    margin: var(--card-padding);
+  }
+
+  .endorser-name {
+    font-size: calc(10px + 0.3rem);
+  }
 }
 </style>

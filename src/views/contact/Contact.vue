@@ -107,4 +107,86 @@ header {
   background: rgb(230, 230, 230);
 }
 
+/* MEDIA QUERIES */
+@media screen and (min-width: 841px) and (max-width: 1280px) {
+  header {
+    height: 26vw;
+  }
+
+  /* Social media header icons */
+  .sm-links {
+    padding-top: 0rem;
+  }
+
+  /* Help services container */
+  .need-help-container {
+    padding: 3vw;
+  }
+}
+
+@media screen and (min-width: 662px) and (max-width: 840px) {
+  header {
+    height: 33vw;
+  }
+
+  /* Social media header icons */
+  .sm-links {
+    padding-top: 0rem;
+  }
+
+  /* Help services container */
+  .need-help-container {
+    padding: 4vw;
+  }
+}
+
+
+@media screen and (min-width: 481px) and (max-width: 661px) {
+  header {
+    height: 43vw;
+  }
+
+  header h1 {
+    font-size: calc(20px + 0.3rem);
+  }
+
+  /* Social media header icons */
+  .sm-links {
+    padding-top: 0rem;
+  }
+
+  /* Help services container */
+  .need-help-container {
+    padding: 4vw;
+  }
+
+  .need-help-container h1 {
+    font-size: calc(20px + 0.3rem);
+  }
+}
+
+@media screen and (min-width: 0) and (max-width: 480px) {
+  header {
+    height: 43vw;
+  }
+
+  header h1 {
+    font-size: calc(20px + 0.3rem);
+  }
+
+  /* Social media header icons */
+  .sm-links {
+    padding-top: 0rem;
+  }
+
+  /* Help services container */
+  .need-help-container {
+    padding: 4vw;
+  }
+
+  .need-help-container h1 {
+    font-size: calc(20px + 0.3rem);
+  }
+
+}
 </style>

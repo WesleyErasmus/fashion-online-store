@@ -4,7 +4,7 @@
     <div v-if="products.length" class="container">
       <div class="row">
         <div
-         class="card col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-4 mt-4"
+         class="card col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 mb-4 mt-4"
           v-for="product in featuredProducts"
           :key="product.id"
         >

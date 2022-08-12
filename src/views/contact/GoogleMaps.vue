@@ -39,24 +39,26 @@
 
 <script>
 export default {
-data() {
-    return {
-        // Company address details
-        BuildingName: "Atlas Online Fashion | Create Your Look",
-        StreetAddress: "V&A Waterfront 19 Dock Rd, Cape Town, 8001",
-        ContactNumber: "021 123 1234",
-        EmailAddress: "info@atlas.co.za",
-    }
-},
+    data() {
+        return {
+            // Company address details
+            BuildingName: "Atlas Online Fashion | Create Your Look",
+            StreetAddress: "V&A Waterfront 19 Dock Rd, Cape Town, 8001",
+            ContactNumber: "021 123 1234",
+            EmailAddress: "info@atlas.co.za",
+        }
+    },
 }
 </script>
 
 <style scoped>
 
+
 /* Class color assignment */
 .primary-color {
     color: var(--primary-color);
 }
+
 /* Company Address section */
 /* Google maps plugin container */
 .map-container {
@@ -108,5 +110,144 @@ data() {
     margin-right: 6px;
     position: relative;
     bottom: -5px;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 1601px) and (max-width: 1920px) {}
+
+@media screen and (min-width: 1281px) and (max-width: 1600px) {}
+
+@media screen and (min-width: 841px) and (max-width: 1280px) {
+    .our-address h1 {
+        font-size: calc(23px + 0.4rem);
+    }
+
+    .google-map,
+    .google-maps {
+        width: 47vw;
+    }
+
+    .our-address-subtitle {
+        font-size: calc(12px + 0.4rem);
+    }
+
+    .our-address-title,
+    .our-address-company-name,
+    .our-address-details,
+    .our-address-contact-number,
+    .our-address-email-address {
+        font-size: calc(9px + 0.3rem);
+    }
+
+
+    .our-address-company-name {
+        font-size: calc(11px + 0.3rem);
+    }
+
+}
+
+@media screen and (min-width: 662px) and (max-width: 840px) {
+    .map-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .our-address h1 {
+        margin-top: 2rem;
+        font-size: calc(21px + 0.4rem);
+    }
+    .google-map,
+    .google-maps {
+        width: 85vw;
+    }
+    .our-address-subtitle {
+        font-size: calc(12px + 0.4rem);
+    }
+
+    .our-address-title,
+    .our-address-company-name,
+    .our-address-details,
+    .our-address-contact-number,
+    .our-address-email-address {
+        font-size: calc(9px + 0.2.5rem);
+    }
+
+
+    .our-address-company-name {
+        font-size: calc(10px + 0.3rem);
+    }
+}
+
+
+@media screen and (min-width: 481px) and (max-width: 661px) {
+    .map-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    
+        .our-address h1 {
+            margin-top: 2rem;
+            font-size: calc(21px + 0.4rem);
+        }
+    
+        .google-map,
+        .google-maps {
+            width: 82vw;
+        }
+    
+        .our-address-subtitle {
+            font-size: calc(12px + 0.4rem);
+        }
+    
+        .our-address-title,
+        .our-address-company-name,
+        .our-address-details,
+        .our-address-contact-number,
+        .our-address-email-address {
+            font-size: calc(9px + 0.2.5rem);
+        }
+    
+    
+        .our-address-company-name {
+            font-size: calc(10px + 0.3rem);
+        }
+
+}
+
+@media screen and (min-width: 0) and (max-width: 480px) {
+    .map-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    
+        .our-address h1 {
+            margin-top: 2rem;
+            font-size: calc(21px + 0.4rem);
+        }
+    
+        .google-map,
+        .google-maps {
+            width: 79vw;
+        }
+    
+        .our-address-subtitle {
+            font-size: calc(12px + 0.4rem);
+        }
+    
+        .our-address-title,
+        .our-address-company-name,
+        .our-address-details,
+        .our-address-contact-number,
+        .our-address-email-address {
+            font-size: calc(9px + 0.2.5rem);
+        }
+    
+    
+        .our-address-company-name {
+            font-size: calc(10px + 0.3rem);
+        }
 }
 </style>

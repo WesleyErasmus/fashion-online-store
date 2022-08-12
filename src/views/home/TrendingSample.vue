@@ -1,32 +1,27 @@
 <template>
-   <!-- Featured Products -->
-    <div class="featured-products-container row">
-      <h1>Trending Collection</h1>
-      <span
-        ><RouterLink :to="{ name: 'FeaturedProducts' }" class="see-all">
-          see all</RouterLink
-        >
-      </span>
-      <div class="card-group">
-        <div v-for="featured in products" :key="featured.id" class="card">
-          <router-link :to="{ name: 'Product', params: { id: featured.id } }">
-            <div class="img-box">
-            <img
-              :src="
-                'https://source.unsplash.com/random/?fashion/id' + featured.id
-              "
-              alt="Just Dropped"
-              class="card-img-top"
-            />
-            </div>
-          </router-link>
-          <div class="card-body"></div>
-          <div class="card-footer">
-            <small class="text-muted">#Featured</small>
+  <!-- Featured Products -->
+  <div class="featured-products-container row">
+    <h1>Trending Collection</h1>
+    <span>
+      <RouterLink :to="{ name: 'FeaturedProducts' }" class="see-all">
+        see all</RouterLink>
+    </span>
+    <div class="card-group">
+      <div v-for="featured in products" :key="featured.id" class="card">
+        <router-link :to="{ name: 'Product', params: { id: featured.id } }">
+          <div class="img-box">
+            <img :src="
+              'https://source.unsplash.com/random/?fashion/id' + featured.id
+            " alt="Just Dropped" class="card-img-top" />
           </div>
+        </router-link>
+        <div class="card-body"></div>
+        <div class="card-footer">
+          <small class="text-muted">#Featured</small>
         </div>
       </div>
     </div>
+  </div>
 
 </template>
 
@@ -55,12 +50,14 @@ export default {
   color: #000 !important;
   transition: 0.4s;
 }
+
 /* Link Hover color */
 @media (hover: hover) {
   a:hover {
     color: #000;
   }
 }
+
 /* Feature and new products cards */
 .see-all {
   color: var(--primary-color) !important;
@@ -68,5 +65,38 @@ export default {
 
 .featured-products-container {
   padding: 5rem 0;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 481px) and (max-width: 661px) {
+
+  .card-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+  }
+
+  .card {
+    width: 45%;
+
+  }
+
+}
+
+@media screen and (min-width: 0) and (max-width: 480px) {
+  .card-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+  }
+
+  .card {
+    width: 40%;
+
+  }
 }
 </style>

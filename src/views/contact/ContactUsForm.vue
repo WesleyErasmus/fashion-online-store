@@ -152,6 +152,13 @@ export default {
 </script>
 
 <style scoped>
+
+
+
+
+
+
+
 /* Message us form */
 .message-container {
     display: flex;
@@ -160,7 +167,8 @@ export default {
     margin-bottom: 5rem;
     background: rgb(230, 230, 230);
     box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
-    padding: var(--card-padding);
+    /* padding: var(--card-padding); */
+    padding: 2rem;
     background: #2f3131;
 }
 
@@ -209,5 +217,7 @@ export default {
     background: var(--primary-color);
     font-size: calc(14px + 0.3rem);
     color: #fff;
+    width: 100%;
 }
+
 </style>

@@ -51,6 +51,8 @@
 
 
 <style scoped>
+
+
 /* Link colors [used to override universal links colors] */
 a,
 .green {
@@ -92,11 +94,39 @@ a,
   font-style: italic;
   color: var(--primary-color);
   font-weight: bold;
+  font-size: calc(12px + 0.4rem);
 }
 .card-title-2 {
   font-weight: bold;
+  font-size: calc(15px + 0.6rem);
 }
-/* End of card titles for blogs */
+.blog-description {
+
+}
 /* End of Blogs */
 
+/* MEDIA QUERIES */
+@media screen and (min-width: 481px) and (max-width: 661px) {
+.blog-description {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 0) and (max-width: 480px) {
+.card-title-1 {
+    font-style: italic;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: calc(10px + 0.3rem);
+  }
+
+  .card-title-2 {
+    font-size: calc(12px + 0.5rem);
+    font-weight: bold;
+  }
+
+  .blog-description {
+    display: none;
+  }
+}
 </style>
