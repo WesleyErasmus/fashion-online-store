@@ -14,6 +14,17 @@ import { RouterLink, RouterView } from "vue-router";
         <RouterLink :to="{ name: 'NewProducts' }">New In</RouterLink>
         <RouterLink :to="{ name: 'About' }">About</RouterLink>
         <RouterLink :to="{ name: 'Contact' }">Contact</RouterLink>
+
+        <!-- Shopping Cart Icon in header -->
+        <div id="navbar-cart" class="cart-icon-link-container">
+          <RouterLink class="shopping-cart-icon" :to="{ name: 'Cart' }">CART<span class="material-symbols-outlined">
+              add_shopping_cart
+            </span>
+            <div class="cart-count-number">{{ this.shoppingCart.length }}</div>
+          </RouterLink>
+          <!-- Cart length count -->
+        </div>
+
       </nav>
     </div>
 
@@ -34,8 +45,16 @@ import { RouterLink, RouterView } from "vue-router";
 
 <script>
 import Footer from "../src/components/Footer.vue";
+import Product from "../src/views/shop/Product.vue";
 export default {
-  components: { Footer },
+  components: { Footer, Product },
+  props: ["shoppingCart"],
+  data() {
+    return {
+      cartCount: 0,
+      shoppingCart: []
+    }
+  },
   methods: {
     back() {
       this.$router.go(-1);
@@ -47,6 +66,22 @@ export default {
     smoothScrollToTop() {
       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     },
+  },
+
+  computed: {
+    cartLength() {
+      return this.shoppingCart.length;
+    },
+  },
+  mounted() {
+    // Display local storage movies in the DOM
+    if (localStorage.getItem("shoppingCart")) {
+      try {
+        this.shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"));
+      } catch (e) {
+        localStorage.removeItem("shoppingCart");
+      }
+    }
   },
 };
 </script>
@@ -60,9 +95,49 @@ header {
   text-align: center;
   background: #fff;
 }
+
+.cart-icon-link-container {
+  display: block;
+  margin: 0 auto;
+  max-width: 1280px;
+  position: relative;
+  margin-top: 5px;
+}
+
+.shopping-cart-icon {
+  position: absolute;
+  right: 2vw;
+  top: -1vw;
+
+}
+
+/* Cart number displayed on dom */
+.cart-count-number {
+  position: absolute;
+  top: -20px;
+  right: 5px;
+  line-height: 1;
+  padding: 6px 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 99999px;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 12px;
+}
+
+.shopping-cart-icon .material-symbols-outlined {
+  font-size: calc(30px + 0.6rem);
+  font-weight: bold;
+  color: var(--primary-grey);
+  color: #000;
+
+}
+
 .back-to-top-btn {
   color: rgb(158, 158, 158);
 }
+
 nav a.router-link-exact-active {
   color: #000;
 }

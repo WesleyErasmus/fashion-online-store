@@ -36,9 +36,9 @@
             <div class="newsletter">Become a MEMBER of our fashion community</div>
             <div class="signup-container">
               <div v-show="errors.length">
-              <ul>
-                <li class="error-message" v-for="error in errors" :key="error">{{ error }}</li>
-              </ul>
+                <ul>
+                  <li class="error-message" v-for="error in errors" :key="error">{{ error }}</li>
+                </ul>
               </div>
               <form @submit.prevent="addSubscriber">
                 <input v-model="newSubscriber" name="subscriber" type="email" placeholder="Enter your email address" />
@@ -60,10 +60,15 @@
       </div>
     </footer>
   </div>
+
+  <!-- Subscription success message -->
+  <Toasts />
 </template>
 
 <script>
+import Toasts from "/src/components/Toasts.vue";
 export default {
+  components: { Toasts },
   data() {
     return {
       subscriberList: [],
@@ -83,11 +88,22 @@ export default {
     }
   },
   methods: {
+    // Subscription success message
+    subscribedSuccess() {
+      var x = document.getElementById("snackbar4");
+      x.className = "show";
+      setTimeout(function () {
+        x.className = x.className.replace("show", "");
+      }, 3000);
+    },
+
+    // Email Validation
     validEmail() {
       var re =
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(this.newSubscriber);
     },
+    // Add subscriber data to local storage
     addSubscriber() {
 
       this.errors = [];
@@ -105,6 +121,9 @@ export default {
       this.subscriberList.push(this.newSubscriber);
       this.newSubscriber = "";
       this.saveSubscriber();
+
+      // Subscription Toast message trigger
+      this.subscribedSuccess()
     },
     saveSubscriber() {
       const parsed = JSON.stringify(this.subscriberList);

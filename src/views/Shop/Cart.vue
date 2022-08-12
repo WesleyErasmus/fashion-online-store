@@ -57,10 +57,16 @@
 
     <!-- End of Cart Page Wrapper -->
   </div>
+
+  <!-- Remove cart message -->
+  <Toasts />
 </template>
 
 <script>
+import Toasts from "/src/components/Toasts.vue";
 export default {
+  
+  components: { Toasts },
   data() {
     return {
       shoppingCart: [],
@@ -79,7 +85,25 @@ export default {
       return total;
     },
   },
+   watch: {
+    shoppingCart: {
+       handler: function (val) {
+        this.$emit('update-books-count', val.length)
+        console.log('caught!');
+      },
+      deep: true
+    },
+
+  },
   methods: {
+    // Remove from success message
+    itemRemovedMessage() {
+      var x = document.getElementById("snackbar3");
+      x.className = "show";
+      setTimeout(function () {
+        x.className = x.className.replace("show", "");
+      }, 3000);
+    },
     // Remove movies from watch-list function
     removeFromCart(product) {
       const remove = this.shoppingCart.filter((i) => i != product);
@@ -87,6 +111,8 @@ export default {
       this.shoppingCart = remove;
 
       this.saveToLocalStorage();
+
+      this.itemRemovedMessage()
     },
 
     // Save movies to watch-list function
@@ -95,7 +121,10 @@ export default {
       localStorage.setItem("shoppingCart", parsed);
 
       console.log(this.shoppingCart);
-      console.log(this.shoppingCart.$price);
+
+      // Refreshes page after item is removed from cart
+      window.location.reload();
+      
     },
   },
   mounted() {
@@ -113,9 +142,9 @@ export default {
 
 <style scoped>
 
-
-
-
+.cart-page {
+  min-height: 69vh;
+}
 
 .cart-sum-total {
   position: fixed;
@@ -162,20 +191,23 @@ export default {
   width: 73px;
   border-radius: 2px;
 }
-
+/* Images container parent */
 .parent {
   display: flex;
 }
 
+/* Images container child container */
 .child-1 {
   margin: var(--card-padding);
   background: transparent;
 }
 
+/* Images container child container */
 .child-2 {
   padding: var(--card-padding);
 }
 
+/* Images container child container */
 .child-3 {
   padding: var(--card-padding);
 }
@@ -237,10 +269,6 @@ button:hover {
   padding: var(--card-padding);
   font-size: calc(12px + 0.4rem);
 }
-
-@media screen and (min-width: 1601px) and (max-width: 1920px) {}
-
-@media screen and (min-width: 1281px) and (max-width: 1600px) {}
 
 @media screen and (min-width: 841px) and (max-width: 1280px) {
   .cart-sum-total {

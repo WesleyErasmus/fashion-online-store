@@ -42,6 +42,7 @@
 import TrendingSample from './TrendingSample.vue'
 import NewProductsSample from './NewProductsSample.vue'
 import HomePageBlogs from './HomePageBlogs.vue'
+
 import axios from "axios";
 export default {
   components: { TrendingSample, NewProductsSample, HomePageBlogs },

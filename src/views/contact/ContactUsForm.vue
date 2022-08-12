@@ -54,10 +54,15 @@
             </form>
         </div>
     </div>
+
+    <!-- Message sent success message -->
+    <Toasts />
 </template>
 
 <script>
+import Toasts from "/src/components/Toasts.vue";
 export default {
+    components: { Toasts },
     name: "Contact",
     data() {
         return {
@@ -87,6 +92,16 @@ export default {
         }
     },
     methods: {
+        // Contact us form submission success message
+        contactUsFormSuccess() {
+            var x = document.getElementById("snackbar2");
+            x.className = "show";
+            setTimeout(function () {
+                x.className = x.className.replace("show", "");
+            }, 3000);
+        },
+
+        // Email validation
         validEmail() {
             var re =
                 /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -139,9 +154,13 @@ export default {
             this.storedUserMessage.message = null;
 
             if (!this.errors.length) {
+                this.contactUsFormSuccess()
                 return true;
+                
             }
+
             e.preventDefault();
+
         },
         saveSubscriber() {
             const parsed = JSON.stringify(this.customerMessages);
@@ -152,13 +171,6 @@ export default {
 </script>
 
 <style scoped>
-
-
-
-
-
-
-
 /* Message us form */
 .message-container {
     display: flex;
@@ -219,5 +231,4 @@ export default {
     color: #fff;
     width: 100%;
 }
-
 </style>

@@ -3,21 +3,14 @@
     <h1>Shop All Our Collections</h1>
     <div v-if="products.length" class="container">
       <div class="row">
-        <div
-          class="card col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 mb-4 mt-4"
-          v-for="product in products"
-          :key="product.id"
-        >
+        <div class="card col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 mb-4 mt-4" v-for="product in products"
+          :key="product.id">
           <router-link :to="{ name: 'Product', params: { id: product.id } }">
-          <!-- :src="product.images" -->
-          <div class="img-box">
-            <img
-              :src="
+            <!-- :src="product.images" -->
+            <div class="img-box">
+              <img :src="
                 'https://source.unsplash.com/random/?fashion/id' + product.id
-              "
-              class="card-img-top"
-              alt="Product Image"
-            />
+              " class="card-img-top" alt="Product Image" />
             </div>
           </router-link>
           <div class="card-body">
@@ -43,6 +36,7 @@
 import axios from "axios";
 // Components import
 import Spinner from "/src/components/Spinner.vue";
+
 export default {
   components: { Spinner },
   data() {
@@ -50,12 +44,9 @@ export default {
       products: [],
     };
   },
-  methods: {},
+  methods: {
+  },
   mounted() {
-    // axios.get("https://fakestoreapi.com/products").then((response) => {
-    //   this.products = response.data;
-    //   console.warn(response);
-    // });
     axios.get("https://api.escuelajs.co/api/v1/products/").then((response) => {
       this.products = response.data;
       console.warn(response);
